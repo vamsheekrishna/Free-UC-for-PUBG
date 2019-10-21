@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9575CD</color>
+    <color name="colorPrimaryDark">#673AB7</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="purple_50">#EDE7F6</color>
+    <color name="purple_100">#D1C4E9</color>
+    <color name="purple_200">#B39DDB</color>
+    <color name="purple_300">#9575CD</color>
+    <color name="purple_400">#7E57C2</color>
+    <color name="purple_500">#673AB7</color>
+    <color name="white">#ffffff</color>
+
+    <color name="yellow">#ffc300</color>
+    <color name="orange">#ff5733</color>
+    <color name="read">#c70039</color>
+    <color name="thickRead">#900c3f</color>
+    <color name="violet">#581845</color>
+
+    <color name="rainbowDashRed">#EE4035</color>
+    <color name="rainbowDashPeach">#F37736</color>
+    <color name="rainbowDashYellow">#FDF498</color>
+    <color name="rainbowDashGreen">#7BC043</color>
+    <color name="rainbowDashBlue">#0392CF</color>
+
+    <string-array name="rainbow_dash">
+        <item>@color/rainbowDashRed</item>
+        <item>@color/read</item>
+        <item>@color/violet</item>
+        <item>@color/rainbowDashGreen</item>
+        <item>@color/rainbowDashBlue</item>
+    </string-array>
+
+</resources>

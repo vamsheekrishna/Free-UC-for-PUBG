@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="enrollViewItem"
+            type="com.example.myapplication.models.EnrollViewDataItem" />
+    </data>
+    <LinearLayout
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/registration_bg">
+        <ImageView
+            android:scaleType="centerInside"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:imageResource="@{enrollViewItem.image}">
+        </ImageView>
+        <TextView
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="italic|bold"
+            android:text="@{enrollViewItem.name}"/>
+    </LinearLayout>
+</layout>

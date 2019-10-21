@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Royal Pass</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_age">Age</string>
+    <string name="hint_password">Password</string>
+    <string name="text_sign_up">SIGN UP</string>
+    <string name="error_message_name">Enter Full Name</string>
+    <string name="error_message_email">Enter Valid Email</string>
+    <string name="error_message_age">Enter Age</string>
+    <string name="error_message_password">Enter Password</string>
+    <string name="success_message">Sign Up Successful</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rs">\u20B9</string>
+    <string name="credit">Your credit is</string>
+    <string name="daily_bonus">Daily Bonus</string>
+    <string name="spinner_bonus">Spinner Bonus</string>
+    <string name="earn_money">Earn Money</string>
+    <string name="invitation_link">Invitation Link</string>
+    <string name="adds_demo">Adds Demo</string>
+    <string name="rotate">Rotate</string>
+    <string name="sucess_msg">congratulations you have won rs</string>
+    <string name="network_error_msg">Network connection is required for this to continue!</string>
+
+    <string-array name="dummy">
+        <item>0</item>
+        <item>10 \u20B9</item>
+        <item>20 \u20B9</item>
+        <item>30 \u20B9</item>
+        <item>40 \u20B9</item>
+        <item>50 \u20B9</item>
+        <item>60 \u20B9</item>
+        <item>70 \u20B9</item>
+        <item>80 \u20B9</item>
+        <item>90 \u20B9</item>
+        <item>100 \u20B9</item>
+        <item>110 \u20B9</item>
+        <item>120 \u20B9</item>
+        <item>130 \u20B9</item>
+    </string-array>
+
+</resources>

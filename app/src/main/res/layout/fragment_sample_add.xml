@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SampleAddFragment">
+    <LinearLayout
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/add_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Banner">
+        </Button>
+
+        <Button
+            android:id="@+id/add_interstitial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Interstitial">
+        </Button>
+
+        <Button
+            android:id="@+id/add_native"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Native">
+        </Button>
+
+        <Button
+            android:id="@+id/add_rewarded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rewarded">
+        </Button>
+
+        <Button
+            android:id="@+id/add_rewarded_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rewarded Video"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:background="@drawable/registration_bg"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <FrameLayout
+            android:id="@+id/add_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/close"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:text="close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</RelativeLayout>
