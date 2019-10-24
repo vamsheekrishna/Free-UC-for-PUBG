@@ -17,14 +17,16 @@ public class Utilities {
 
     public static final String MY_PREFS = "myPrefs";
     public static final String NAME = "name";
-    public static final String PASSWORD = "password";
+    public static final String MOBILE_NO = "mobile";
     public static final String SCORE = "score";
+    private static final String EMAIL_ID = "email";
 
     public static void generateProfile(Context context, UserViewModel mViewModel) {
         SharedPreferences myPrefs = Objects.requireNonNull(context).getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = myPrefs.edit();
         edit.putString(NAME, mViewModel.getName());
-        edit.putString(PASSWORD, mViewModel.getMobile());
+        edit.putString(MOBILE_NO, mViewModel.getEmail());
+        edit.putString(EMAIL_ID, mViewModel.getMobile());
         edit.putInt(SCORE, mViewModel.getScore());
         edit.apply();
     }
@@ -39,7 +41,8 @@ public class Utilities {
             SharedPreferences myPrefs = Objects.requireNonNull(context).getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
             UserViewModel userViewModel = new UserViewModel();
             userViewModel.setName(myPrefs.getString(NAME, null));
-            userViewModel.setMobile(myPrefs.getString(PASSWORD, null));
+            userViewModel.setMobile(myPrefs.getString(MOBILE_NO, null));
+            userViewModel.setEmail(myPrefs.getString(EMAIL_ID, null));
             userViewModel.setScore(myPrefs.getInt(SCORE, 0));
             return userViewModel;
         }

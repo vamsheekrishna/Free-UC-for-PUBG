@@ -42,7 +42,7 @@ public class DailyBonusFragment extends BaseFragment implements View.OnClickList
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mListener.setText(String.valueOf(this.getTag()));
-        rewardedAd = new RewardedAd(Objects.requireNonNull(getActivity()),
+        /*rewardedAd = new RewardedAd(Objects.requireNonNull(getActivity()),
                 "ca-app-pub-3940256099942544/5224354917");
         RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
             @Override
@@ -56,11 +56,12 @@ public class DailyBonusFragment extends BaseFragment implements View.OnClickList
             }
         };
         rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
+        view.findViewById(R.id.click_me).setOnClickListener(this);*/
+
         View view = inflater.inflate(R.layout.fragment_daily_bonus, container, false);
-        view.findViewById(R.id.click_me).setOnClickListener(this);
         return view;
     }
-    public RewardedAd createAndLoadRewardedAd() {
+    /*public RewardedAd createAndLoadRewardedAd() {
         RewardedAd rewardedAd = new RewardedAd(Objects.requireNonNull(getActivity()),
                 "ca-app-pub-3940256099942544/5224354917");
         RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
@@ -76,11 +77,11 @@ public class DailyBonusFragment extends BaseFragment implements View.OnClickList
         };
         rewardedAd.loadAd(new AdRequest.Builder().build(), adLoadCallback);
         return rewardedAd;
-    }
+    }*/
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //showDialog("30", R.drawable.daily_reward_icon, Objects.requireNonNull(getActivity()).getString(R.string.sucess_msg));
+        showDialog("30", R.drawable.daily_reward_icon, Objects.requireNonNull(getActivity()).getString(R.string.sucess_msg));
     }
 
     @Override
@@ -102,7 +103,7 @@ public class DailyBonusFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if (rewardedAd.isLoaded()) {
+        /*if (rewardedAd.isLoaded()) {
             RewardedAdCallback adCallback = new RewardedAdCallback() {
                 @Override
                 public void onRewardedAdOpened() {
@@ -127,6 +128,6 @@ public class DailyBonusFragment extends BaseFragment implements View.OnClickList
             rewardedAd.show(getActivity(), adCallback);
         } else {
             Log.d("TAG", "The rewarded ad wasn't loaded yet.");
-        }
+        }*/
     }
 }

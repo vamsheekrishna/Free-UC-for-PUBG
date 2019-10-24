@@ -6,11 +6,13 @@ import android.view.View;
 
 import androidx.databinding.BaseObservable;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class UserViewModel extends BaseObservable {
-    private String name = "Vamshee Krishna";
+public class UserViewModel extends BaseObservable implements Serializable {
+    private String name;
     private String mobile;
+    private String email;
     private Integer score = 0;
 
     public String getName() {
@@ -35,5 +37,13 @@ public class UserViewModel extends BaseObservable {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

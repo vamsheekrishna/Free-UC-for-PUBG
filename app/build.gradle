@@ -1,22 +1,45 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
     dataBinding {
         enabled = true
     }
+    flavorDimensions("mode")
     defaultConfig {
+        dimension 'mode'
         applicationId "com.example.myapplication"
-        minSdkVersion 19
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            debuggable true
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    productFlavors {
+        Demo {
+            applicationId 'com.free.uc.pubg.test'
+            resValue "string", "app_name", "Free UC PUBG"
+            buildConfigField "String", "REWARDED_ADD", "\"ca-app-pub-3940256099942544/5224354917\""
+            buildConfigField "String", "INTERSTITIAL_ADD", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "BANNER_ADD", "\"ca-app-pub-3940256099942544/6300978111\""
+        }
+
+        Live {
+            applicationId 'com.free.uc.pubg'
+            resValue "string", "app_name", "Free UC PUBG"
         }
     }
 }
@@ -33,6 +56,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.airbnb.android:lottie:2.8.0'
-    implementation "android.arch.lifecycle:viewmodel:1.1.1"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.1.0'
     implementation 'com.google.android.gms:play-services-ads:18.2.0'
+    implementation 'com.google.firebase:firebase-auth:19.1.0'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 }

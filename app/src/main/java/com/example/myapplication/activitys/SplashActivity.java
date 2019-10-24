@@ -9,6 +9,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.myapplication.R;
+import com.example.myapplication.authentication.AuthenticationActivity;
+import com.example.myapplication.fragments.RegistrationFragment;
+import com.example.myapplication.models.Utilities;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -54,8 +57,14 @@ public class SplashActivity extends AppCompatActivity {
                     }
 
                 }*/
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
+                boolean test = Utilities.isNewUser(SplashActivity.this);
+                if(Utilities.isNewUser(SplashActivity.this)) {
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(SplashActivity.this, AuthenticationActivity.class);
+                    startActivity(intent);
+                }
                 finish();
             }
         }, SPLASH_TIME_OUT);

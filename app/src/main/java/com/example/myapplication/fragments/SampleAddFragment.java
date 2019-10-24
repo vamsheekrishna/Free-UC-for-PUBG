@@ -16,8 +16,10 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.myapplication.BuildConfig;
 import com.example.myapplication.R;
 import com.example.myapplication.activitys.AddsDemoActivity;
+import com.example.myapplication.custom_views.adds.AdmobAdds;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
@@ -195,7 +197,7 @@ public class SampleAddFragment extends BaseFragment implements View.OnClickListe
     private void showInterstitialAdd() {
 
         final InterstitialAd mInterstitialAd = new InterstitialAd(Objects.requireNonNull(getActivity()));
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId(BuildConfig.INTERSTITIAL_ADD);
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         mInterstitialAd.setAdListener(new AdListener() {
             @Override

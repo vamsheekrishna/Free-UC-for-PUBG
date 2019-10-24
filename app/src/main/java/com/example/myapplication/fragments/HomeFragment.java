@@ -72,9 +72,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View view) {
         EnrollViewDataItem enrollViewDataItem = (EnrollViewDataItem) view.getTag();
         if(enrollViewDataItem.getName().equals(getString(R.string.daily_bonus))) {
-            mListener.goToDailyBonus();
+            mListener.showAddVideo();
         } else if(enrollViewDataItem.getName().equals(getString(R.string.spinner_bonus))) {
-            mListener.goToSpinnerBonus();
+            mListener.showInterstitialAdd();
         } else if(enrollViewDataItem.getName().equals(getString(R.string.earn_money))) {
             mListener.goToEarnMoney();
         } else if(enrollViewDataItem.getName().equals(getString(R.string.invitation_link))) {

@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Royal Pass</string>
     <string name="title_activity_base">BaseActivity</string>
 
     <string name="hint_full_name">Full Name</string>
@@ -42,5 +41,25 @@
         <item>120 \u20B9</item>
         <item>130 \u20B9</item>
     </string-array>
+
+    <string name="hint_verification_code">Verification Code</string>
+    <string name="resend_phone_auth">Resend</string>
+    <string name="verify_phone_auth">Verify</string>
+
+    <string name="status_code_sent">Code Sent</string>
+    <string name="status_verification_failed">Verification failed</string>
+    <string name="status_verification_succeeded">Verification succeeded</string>
+    <string name="status_sign_in_failed">Sign-in failed</string>
+    <string name="instant_validation">(instant validation)</string>
+
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+
+    <!--sign up-->
+    <string name="sign_up_title">Free Elite Royal Pass and Free UC for PUBG</string>
+    <string name="sign_up_user_name">User Name</string>
+    <string name="sign_up_mobile_number">Phone Number</string>
+    <string name="sign_up">SignUp</string>
+    <string name="sign_up_privacy_policy">Privacy Policy</string>
 
 </resources>

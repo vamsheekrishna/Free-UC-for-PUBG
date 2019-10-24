@@ -14,4 +14,7 @@ public interface OnHomeFragmentInteractionListener {
     void setText(String text);
 
     void goToAddsDemo();
+
+    void showInterstitialAdd();
+    void showAddVideo();
 }

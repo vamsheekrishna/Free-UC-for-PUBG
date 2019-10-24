@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#9575CD</color>
-    <color name="colorPrimaryDark">#673AB7</color>
+    <color name="colorPrimary">#152975</color>
+    <color name="colorPrimaryDark">#0e83c9</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="purple_50">#EDE7F6</color>
@@ -32,4 +32,10 @@
         <item>@color/rainbowDashBlue</item>
     </string-array>
 
+   <!-- new app colours-->
+
+    <color name="sign_up_bg_blue">#0e83c9</color>
+    <color name="sign_up_bg_white">#ffffff</color>
+    <color name="sign_up_submit">#152975</color>
+    <color name="gray">#6E6E6E</color>
 </resources>
