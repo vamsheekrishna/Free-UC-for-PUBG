@@ -25,6 +25,26 @@
     <string name="sucess_msg">congratulations you have won rs</string>
     <string name="network_error_msg">Network connection is required for this to continue!</string>
 
+    <string name="hint_verification_code">Verification Code</string>
+
+    <string name="resend_phone_auth">Resend</string>
+    <string name="verify_phone_auth">Verify</string>
+    <string name="status_code_sent">Code Sent</string>
+
+    <string name="status_verification_failed">Verification failed</string>
+    <string name="status_verification_succeeded">Verification succeeded</string>
+    <string name="status_sign_in_failed">Sign-in failed</string>
+    <string name="instant_validation">(instant validation)</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+
+    <string name="firebase_user_management">Firebase User Management</string>
+    <string name="sign_up_title">Free Elite Royal Pass and Free UC for PUBG</string>
+
+    <!--sign up-->
+    <string name="sign_up_user_name">User Name</string>
+    <string name="sign_up_mobile_number">Phone Number</string>
+    <string name="sign_up">SignUp</string>
+    <string name="sign_up_privacy_policy">Privacy Policy</string>
     <string-array name="dummy">
         <item>0</item>
         <item>10 \u20B9</item>
@@ -41,25 +61,5 @@
         <item>120 \u20B9</item>
         <item>130 \u20B9</item>
     </string-array>
-
-    <string name="hint_verification_code">Verification Code</string>
-    <string name="resend_phone_auth">Resend</string>
-    <string name="verify_phone_auth">Verify</string>
-
-    <string name="status_code_sent">Code Sent</string>
-    <string name="status_verification_failed">Verification failed</string>
-    <string name="status_verification_succeeded">Verification succeeded</string>
-    <string name="status_sign_in_failed">Sign-in failed</string>
-    <string name="instant_validation">(instant validation)</string>
-
-    <string name="firebase_status_fmt">Firebase User: %s</string>
-    <string name="firebase_user_management">Firebase User Management</string>
-
-    <!--sign up-->
-    <string name="sign_up_title">Free Elite Royal Pass and Free UC for PUBG</string>
-    <string name="sign_up_user_name">User Name</string>
-    <string name="sign_up_mobile_number">Phone Number</string>
-    <string name="sign_up">SignUp</string>
-    <string name="sign_up_privacy_policy">Privacy Policy</string>
 
 </resources>

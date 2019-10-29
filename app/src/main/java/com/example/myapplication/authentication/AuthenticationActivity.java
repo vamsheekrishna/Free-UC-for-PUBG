@@ -41,4 +41,13 @@ public class AuthenticationActivity extends BaseActivity implements OnAuthentica
         startActivity(intent);
         finish();
     }
+
+    @Override
+    public void goToPrivacyContent() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container ,PrivacyTextFragment.newInstance());
+        fragmentTransaction.addToBackStack("PrivacyTextFragment");
+        fragmentTransaction.commit();
+    }
 }

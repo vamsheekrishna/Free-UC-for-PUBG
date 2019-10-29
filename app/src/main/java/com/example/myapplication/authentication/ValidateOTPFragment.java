@@ -36,8 +36,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class ValidateOTPFragment extends BaseFragment implements View.OnClickListener {
@@ -86,7 +88,6 @@ public class ValidateOTPFragment extends BaseFragment implements View.OnClickLis
 
     private OnAuthenticationInteractionListener mListener;
     private UserViewModel myProfile = new UserViewModel();
-    private boolean isRegistration = true;
 
 
     public ValidateOTPFragment() {
@@ -111,17 +112,15 @@ public class ValidateOTPFragment extends BaseFragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_verify_phone:
-
+            case R.id.verify_phone:
                 String code = mVerificationField.getText().toString();
                 if (TextUtils.isEmpty(code)) {
                     mVerificationField.setError("Cannot be empty.");
                     return;
                 }
                 verifyPhoneNumberWithCode(mVerificationId, code);
-
                 break;
-            case R.id.button_resend:
+            case R.id.resend:
                 resendVerificationCode(myProfile.getMobile(), mResendToken);
                 break;
         }
@@ -151,8 +150,8 @@ public class ValidateOTPFragment extends BaseFragment implements View.OnClickLis
         mVerificationField = body.findViewById(R.id.field_verification_code);
 
         //mStartButton = (Button) body.findViewById(R.id.button_start_verification);
-        mVerifyButton = body.findViewById(R.id.button_verify_phone);
-        mResendButton = body.findViewById(R.id.button_resend);
+        mVerifyButton = body.findViewById(R.id.verify_phone);
+        mResendButton = body.findViewById(R.id.resend);
         //mSignOutButton = (Button) body.findViewById(R.id.sign_out_button);
 
         // Assign click listeners
@@ -407,11 +406,9 @@ public class ValidateOTPFragment extends BaseFragment implements View.OnClickLis
                 startActivity(intent);
                 finish();
             */
-
+            signOut();
             Utilities.generateProfile(getActivity(), myProfile);
             mListener.gotoHome();
-            signOut();
-
         }
     }
 

@@ -21,11 +21,10 @@ public class EnrollViewAdapter extends RecyclerView.Adapter<EnrollViewHolder> {
     public EnrollViewAdapter(View.OnClickListener onClickListener, Context context) {
         mOnClickListener = onClickListener;
         enrollViewDataItems = new ArrayList<>();
-        enrollViewDataItems.add(new EnrollViewDataItem(context.getString(R.string.sucess_msg), context.getString(R.string.daily_bonus), R.drawable.daily_reward_icon));
-        enrollViewDataItems.add(new EnrollViewDataItem(context.getString(R.string.sucess_msg), context.getString(R.string.spinner_bonus), R.drawable.wheel));
-        enrollViewDataItems.add(new EnrollViewDataItem(context.getString(R.string.sucess_msg), context.getString(R.string.earn_money), R.drawable.install_apps));
-        enrollViewDataItems.add(new EnrollViewDataItem(context.getString(R.string.sucess_msg), context.getString(R.string.invitation_link), R.drawable.share_it));
-        enrollViewDataItems.add(new EnrollViewDataItem(context.getString(R.string.adds_demo), context.getString(R.string.adds_demo), R.drawable.share_it));
+        enrollViewDataItems.add(new EnrollViewDataItem(context.getString(R.string.sucess_msg), context.getString(R.string.daily_bonus), R.drawable.dailybonus));
+        enrollViewDataItems.add(new EnrollViewDataItem(context.getString(R.string.sucess_msg), context.getString(R.string.spinner_bonus), R.drawable.luckyspin));
+        enrollViewDataItems.add(new EnrollViewDataItem(context.getString(R.string.sucess_msg), context.getString(R.string.earn_money), R.drawable.freeuc));
+        enrollViewDataItems.add(new EnrollViewDataItem(context.getString(R.string.sucess_msg), context.getString(R.string.invitation_link), R.drawable.inviteearn));
     }
     @NonNull
     @Override

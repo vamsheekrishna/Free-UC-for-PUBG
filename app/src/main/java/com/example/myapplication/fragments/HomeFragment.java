@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentHomeBinding;
@@ -21,7 +23,6 @@ import java.util.Objects;
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private OnHomeFragmentInteractionListener mListener;
-    private com.google.android.gms.ads.AdView mAdView;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -42,11 +43,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mListener.setText(String.valueOf(this.getTag()));
         FragmentHomeBinding fragmentHomeBinding =  DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false);
         View view = fragmentHomeBinding.getRoot();
-        fragmentHomeBinding.setEnrollViewAdapter(new EnrollViewAdapter(this, Objects.requireNonNull(getActivity())));
+        EnrollViewAdapter enrollViewAdapter = new EnrollViewAdapter(this, Objects.requireNonNull(getActivity()));
+        RecyclerView recyclerView  = view.findViewById(R.id.recycleview);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2, RecyclerView.VERTICAL,false));
+        fragmentHomeBinding.setEnrollViewAdapter(enrollViewAdapter);
         fragmentHomeBinding.setUserModel(Utilities.getUser(getActivity()));
-        mAdView = view.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
         return view;
     }
 

@@ -2,6 +2,7 @@ package com.example.myapplication.authentication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import android.text.TextUtils;
@@ -9,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -37,6 +40,7 @@ public class SignUpFragment extends BaseFragment implements View.OnClickListener
 
     private OnAuthenticationInteractionListener mListener;
     private GoogleSignInClient mGoogleSignInClient;
+    CheckBox privacyClick;
     public SignUpFragment() {
         // Required empty public constructor
     }
@@ -66,6 +70,11 @@ public class SignUpFragment extends BaseFragment implements View.OnClickListener
         //mListener.setText(String.valueOf(this.getTag()));
         FragmentSignUpBinding FragmentGoogleAuthBindingImpl = DataBindingUtil.inflate(inflater,R.layout.fragment_sign_up,container,false);
         View view = FragmentGoogleAuthBindingImpl.getRoot();//inflater.inflate(R.layout.registration_fragment, container, false);
+
+        privacyClick = view.findViewById(R.id.privacy_click);
+        TextView textView = view.findViewById(R.id.privacy_text);
+        textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        textView.setOnClickListener(this);
         view.findViewById(R.id.submit).setOnClickListener(this);
 
         // google sign in start
@@ -93,14 +102,26 @@ public class SignUpFragment extends BaseFragment implements View.OnClickListener
 
         switch (view.getId()) {
             case R.id.sign_in_button:
-                signIn();
+                if(privacyClick.isChecked()) {
+                    signIn();
+                } else {
+                    Toast.makeText(getActivity(), "Please Selected the Privacy text.", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.submit:
                 if(!TextUtils.isEmpty(mViewModel.getName()) && !TextUtils.isEmpty(mViewModel.getMobile())) {
-                    mobileVerification();
+                    if(privacyClick.isChecked()) {
+                        mobileVerification();
+                    } else {
+                        Toast.makeText(getActivity(), "Please Selected the Privacy text.", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Toast.makeText(getActivity(), "Please enter all fields", Toast.LENGTH_SHORT).show();
                 }
+                break;
+
+            case R.id.privacy_text:
+                mListener.goToPrivacyContent();
                 break;
         }
 
@@ -137,7 +158,7 @@ public class SignUpFragment extends BaseFragment implements View.OnClickListener
             Log.d("account: ", account.toString());
             //Toast.makeText(getActivity(), "Name: "+account.getDisplayName(), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getActivity(), "go and die", Toast.LENGTH_SHORT).show();
+
         }
     }
 

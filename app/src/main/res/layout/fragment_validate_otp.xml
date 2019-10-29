@@ -93,7 +93,7 @@
 
             <Button
                 android:layout_marginEnd="4dp"
-                android:id="@+id/button_verify_phone"
+                android:id="@+id/verify_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
@@ -102,7 +102,7 @@
 
             <Button
                 android:layout_marginStart="4dp"
-                android:id="@+id/button_resend"
+                android:id="@+id/resend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"

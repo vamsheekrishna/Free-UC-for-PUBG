@@ -29,7 +29,8 @@
             android:name=".activitys.BaseActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activitys.MainActivity" />
+        <activity android:name=".activitys.MainActivity" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
