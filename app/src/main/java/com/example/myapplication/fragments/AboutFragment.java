@@ -17,7 +17,7 @@ import com.example.myapplication.R;
 import java.util.Objects;
 
 
-public class AboutFragment extends BaseFragment
+public class AboutFragment extends HomeBaseFragment
 {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -26,7 +26,7 @@ public class AboutFragment extends BaseFragment
     private String mParam1;
     private String mParam2;
 
-    private OnHomeFragmentInteractionListener mListener;
+    //private OnHomeFragmentInteractionListener mListener;
 
     public AboutFragment() {
         // Required empty public constructor

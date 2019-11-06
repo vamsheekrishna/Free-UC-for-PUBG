@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/wallet"
-        android:icon="@drawable/wallet"
-        android:title="Wallet"
+        android:icon="@null"
+        android:title="@null"
+        app:actionLayout="@layout/menu_wallet"
         >
     </item>
 
     <item android:id="@+id/rate_us"
-        android:icon="@drawable/rateus"
-        android:title="Rate us"
+        android:icon="@null"
+        android:title="@null"
+        app:actionLayout="@layout/menu_rate"
         >
     </item>
 
     <item android:id="@+id/about"
-        android:icon="@drawable/howitworks"
-        android:title="How it works">
+        android:icon="@null"
+        android:title="@null"
+        app:actionLayout="@layout/menu_how_to_use">
     </item>
 </menu>

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:id="@+id/header"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
@@ -83,8 +83,13 @@
                 android:layout_height="wrap_content"/>
         </RelativeLayout>
 
-    </LinearLayout>
-
+    </LinearLayout>-->
+    <Button
+        android:layout_alignParentTop="true"
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fullbanner"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleview"
         android:layout_below="@+id/header"

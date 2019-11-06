@@ -85,9 +85,11 @@ public class BaseActivity extends AppCompatActivity {
     public void showNativeAdd(boolean isShow) {
         isShowNativeAdd = isShow;
         if (isShowNativeAdd) {
-        findViewById(R.id.google_native_add).setVisibility(View.VISIBLE);
+            findViewById(R.id.google_native_add).setVisibility(View.VISIBLE);
+            showNativeAdd();
         } else {
             findViewById(R.id.google_native_add).setVisibility(View.GONE);
+            handler.removeCallbacks(periodicUpdate);
         }
     }
     private  void showNativeAdd() {
@@ -105,6 +107,7 @@ public class BaseActivity extends AppCompatActivity {
         if(isShowNativeAdd) {
             isShowNativeAdd = false;
         }
+        handler.removeCallbacks(periodicUpdate);
     }
 
     Handler handler = new Handler();

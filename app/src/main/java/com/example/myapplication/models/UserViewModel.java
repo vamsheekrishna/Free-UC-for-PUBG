@@ -13,6 +13,7 @@ public class UserViewModel extends BaseObservable implements Serializable {
     private String name;
     private String mobile;
     private String email;
+    private String date;
     private Integer score = 0;
 
     public String getName() {
@@ -45,5 +46,13 @@ public class UserViewModel extends BaseObservable implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

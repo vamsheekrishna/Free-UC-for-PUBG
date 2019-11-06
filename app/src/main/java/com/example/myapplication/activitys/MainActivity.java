@@ -1,38 +1,32 @@
 package com.example.myapplication.activitys;
 import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.androidsx.rateme.RateMeDialog;
 import com.example.myapplication.BuildConfig;
 import com.example.myapplication.R;
+import com.example.myapplication.authentication.FreeUCButtonScreen;
 import com.example.myapplication.fragments.AboutFragment;
 import com.example.myapplication.fragments.DailyBonusFragment;
-import com.example.myapplication.fragments.DialogBoxFragment;
 import com.example.myapplication.fragments.EarnMoneyFragment;
+import com.example.myapplication.fragments.CongratulationScreen;
 import com.example.myapplication.fragments.HomeFragment;
 import com.example.myapplication.fragments.OnHomeFragmentInteractionListener;
 import com.example.myapplication.fragments.RateUsBoxFragment;
 import com.example.myapplication.fragments.SampleAddFragment;
 import com.example.myapplication.fragments.SpinnerBonusFragment;
-import com.facebook.ads.AdSize;
 import com.facebook.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.formats.UnifiedNativeAd;
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdCallback;
@@ -105,16 +99,19 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
 
     @Override
     public void goToDailyBonus() {
+        setAddMode(true);
         replaceFragment(DailyBonusFragment.newInstance(),getString(R.string.daily_bonus), true);
     }
 
     @Override
     public void goToSpinnerBonus() {
+        setAddMode(true);
         replaceFragment(SpinnerBonusFragment.newInstance(),getString(R.string.spinner_bonus), true);
     }
 
     @Override
     public void goToEarnMoney() {
+        setAddMode(true);
         replaceFragment(EarnMoneyFragment.newInstance(),getString(R.string.earn_money), true);
     }
 
@@ -131,6 +128,18 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
     @Override
     public void goToAddsDemo() {
         replaceFragment(SampleAddFragment.newInstance(),getString(R.string.adds_demo), true);
+    }
+
+
+    @Override
+    public void goToFreeRoyalPassScreen() {
+        setAddMode(true);
+        replaceFragment(CongratulationScreen.newInstance(2),getString(R.string.adds_demo), true);
+    }
+
+    @Override
+    public void showCongratsFragment(int parseInt) {
+        replaceFragment(CongratulationScreen.newInstance(parseInt),"Congratulations",false);
     }
 
     @Override
@@ -234,6 +243,12 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
     }
 
     @Override
+    public void setAddMode(boolean addMode) {
+        showNativeAdd(addMode);
+    }
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -259,7 +274,7 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
             case R.id.wallet:
                 Toast.makeText(MainActivity.this, "Wallet",Toast.LENGTH_SHORT).show();break;
             case R.id.about:
-                isHomeAsUp();
+                //enableBackArrow();
                 replaceFragment(AboutFragment.newInstance("", ""),"How to use", true);
                 break;
             case R.id.rate_us:
@@ -281,16 +296,22 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
 
     @Override
     public void onBackPressed() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
-        if (fragment instanceof  AboutFragment) {
-            isHamburgerAsUp();
-        }
-        super.onBackPressed();
-    }
+        /*Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+        if (fragment instanceof  AboutFragment ) {
 
-    private void isHomeAsUp() {
+        }*/
+        isHamburgerAsUp();
+        super.onBackPressed();
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+        if(fragment instanceof  HomeFragment) {
+            setAddMode(false);
+        }
+    }
+    @Override
+    public void enableBackArrow() {
         t.setDrawerIndicatorEnabled(false);
     }
+
     private void isHamburgerAsUp() {
         t.setDrawerIndicatorEnabled(true);
     }

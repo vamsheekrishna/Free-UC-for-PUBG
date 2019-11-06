@@ -16,7 +16,6 @@ import com.example.myapplication.databinding.FragmentHomeBinding;
 import com.example.myapplication.models.Utilities;
 import com.example.myapplication.models.EnrollViewDataItem;
 import com.example.myapplication.viewmodels.EnrollViewAdapter;
-import com.google.android.gms.ads.AdRequest;
 
 import java.util.Objects;
 
@@ -44,6 +43,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         mListener.setText(String.valueOf(this.getTag()));
         FragmentHomeBinding fragmentHomeBinding =  DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false);
         View view = fragmentHomeBinding.getRoot();
+        view.findViewById(R.id.header).setOnClickListener(this);
         EnrollViewAdapter enrollViewAdapter = new EnrollViewAdapter(this, Objects.requireNonNull(getActivity()));
         RecyclerView recyclerView  = view.findViewById(R.id.recycleview);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2, RecyclerView.VERTICAL,false));
@@ -72,17 +72,22 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        EnrollViewDataItem enrollViewDataItem = (EnrollViewDataItem) view.getTag();
-        if(enrollViewDataItem.getName().equals(getString(R.string.daily_bonus))) {
-            mListener.showAddVideo();
-        } else if(enrollViewDataItem.getName().equals(getString(R.string.spinner_bonus))) {
-            mListener.showInterstitialAdd();
-        } else if(enrollViewDataItem.getName().equals(getString(R.string.earn_money))) {
-            mListener.goToEarnMoney();
-        } else if(enrollViewDataItem.getName().equals(getString(R.string.invitation_link))) {
-            mListener.goToInvitationLink();
-        } else if(enrollViewDataItem.getName().equals(getString(R.string.adds_demo))) {
-            mListener.goToAddsDemo();
+        if(view.getId() == R.id.header) {
+            mListener.goToFreeRoyalPassScreen();
+        } else {
+            EnrollViewDataItem enrollViewDataItem = (EnrollViewDataItem) view.getTag();
+            if (enrollViewDataItem.getName().equals(getString(R.string.daily_bonus))) {
+                //mListener.showAddVideo();
+                mListener.goToDailyBonus();
+            } else if (enrollViewDataItem.getName().equals(getString(R.string.spinner_bonus))) {
+                mListener.goToSpinnerBonus();
+            } else if (enrollViewDataItem.getName().equals(getString(R.string.earn_money))) {
+                mListener.goToEarnMoney();
+            } else if (enrollViewDataItem.getName().equals(getString(R.string.invitation_link))) {
+                mListener.goToInvitationLink();
+            } else if (enrollViewDataItem.getName().equals(getString(R.string.adds_demo))) {
+                mListener.goToAddsDemo();
+            }
         }
         //Toast.makeText(getActivity(), "Selected: "+enrollViewDataItem.getName(), Toast.LENGTH_SHORT).show();
     }

@@ -9,22 +9,8 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/registration_bg">
-    <Button
-        android:id="@+id/rotate"
-        android:text="@string/rotate"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:textColor="@color/white"
-        android:background="@drawable/gradient_bg"
-        android:layout_alignParentBottom="true"
-        />
+    android:paddingTop="@dimen/activity_vertical_margin">
+
     <com.example.myapplication.custom_views.spinningwheel.SpinningWheelView
         android:id="@+id/wheel"
         android:layout_alignParentTop="true"
@@ -33,11 +19,26 @@
         android:layout_above="@+id/rotate"
         app:wheel_arrow_width="20dp"
         app:wheel_arrow_height="35dp"
-        app:wheel_arrow_color="@color/violet"
+        app:wheel_arrow_color="@color/sign_up_submit"
         app:wheel_colors="@array/rainbow_dash"
         app:wheel_items="@array/dummy"
-        app:wheel_stroke_color="@color/violet"
+        app:wheel_stroke_color="@color/sign_up_submit"
         app:wheel_stroke_width="5dp"/>
 
 
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/rotate"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/sign_up_submit_bg"
+        android:text="@string/rotate"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textStyle="bold">
+
+    </Button>
 </RelativeLayout>

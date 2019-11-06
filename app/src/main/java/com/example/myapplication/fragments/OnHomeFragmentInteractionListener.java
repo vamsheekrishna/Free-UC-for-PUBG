@@ -18,4 +18,9 @@ public interface OnHomeFragmentInteractionListener {
     void showInterstitialAdd();
     void showAddVideo();
     void showNativeAdd();
+    void setAddMode(boolean addMode);
+    void goToFreeRoyalPassScreen();
+    void enableBackArrow();
+
+    void showCongratsFragment(int parseInt);
 }

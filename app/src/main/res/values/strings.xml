@@ -54,20 +54,20 @@
     <string name="free_uc_for_pubg">Free UC for Pubg</string>
     <string name="gmail_verification">GMail Verification</string>
     <string name="mobile_verification">Mobile Verification</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="you_earn">You Earn</string>
+    <string name="uc_count">%1$d UC</string>
+    <string name="daily_bouns_error">Please comeback Tomorrow</string>
+    <string name="sorry">Sorry</string>
+    <string name="rate_us">Rate Us</string>
+    <string name="how_it_work">How ir works</string>
+    <!--\u20B9-->
     <string-array name="dummy">
         <item>0</item>
-        <item>10 \u20B9</item>
-        <item>20 \u20B9</item>
-        <item>30 \u20B9</item>
-        <item>40 \u20B9</item>
-        <item>50 \u20B9</item>
-        <item>60 \u20B9</item>
-        <item>70 \u20B9</item>
-        <item>80 \u20B9</item>
-        <item>90 \u20B9</item>
-        <item>100 \u20B9</item>
-        <item>110 \u20B9</item>
-        <item>120 \u20B9</item>
-        <item>130 \u20B9</item>
+        <item>1 UC</item>
+        <item>2 UC</item>
+        <item>3 UC</item>
+        <item>4 UC</item>
+        <item>5 UC</item>
     </string-array>
 </resources>

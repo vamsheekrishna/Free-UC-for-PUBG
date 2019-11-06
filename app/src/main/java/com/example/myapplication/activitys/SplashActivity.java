@@ -10,7 +10,6 @@ import android.view.WindowManager;
 
 import com.example.myapplication.R;
 import com.example.myapplication.authentication.AuthenticationActivity;
-import com.example.myapplication.fragments.RegistrationFragment;
 import com.example.myapplication.models.Utilities;
 
 public class SplashActivity extends AppCompatActivity {

@@ -14,8 +14,8 @@ import com.example.myapplication.models.Utilities;
 
 import java.util.Objects;
 
-public class SpinnerBonusFragment extends BaseFragment implements SpinningWheelView.OnRotationListener<String>{
-    private OnHomeFragmentInteractionListener mListener;
+public class SpinnerBonusFragment extends HomeBaseFragment implements SpinningWheelView.OnRotationListener<String>{
+    //private OnHomeFragmentInteractionListener mListener;
 
     public SpinnerBonusFragment() {
         // Required empty public constructor
@@ -34,12 +34,11 @@ public class SpinnerBonusFragment extends BaseFragment implements SpinningWheelV
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mListener.setText(String.valueOf(this.getTag()));
         final View view = inflater.inflate(R.layout.fragment_spinner_bonus, container, false);
 
-        final SpinningWheelView wheelView = (SpinningWheelView) view.findViewById(R.id.wheel);
+        final SpinningWheelView wheelView = view.findViewById(R.id.wheel);
 
-        Button rotate = (Button) view.findViewById(R.id.rotate);
+        Button rotate = view.findViewById(R.id.rotate);
 
         wheelView.setItems(R.array.dummy);
         wheelView.setOnRotationListener(this);
@@ -84,8 +83,9 @@ public class SpinnerBonusFragment extends BaseFragment implements SpinningWheelV
         String[] temp = item.split(" ");
         //Toast.makeText(getActivity(), item, Toast.LENGTH_LONG).show();
         Utilities.updateCredit(Integer.parseInt(temp[0]), getActivity());
+        mListener.showCongratsFragment(Integer.parseInt(temp[0]));
         //Objects.requireNonNull(getActivity()).onBackPressed();
-        showDialog( temp[0],  R.drawable.wheel, Objects.requireNonNull(getActivity()).getString(R.string.sucess_msg));
+        //showDialog( temp[0],  R.drawable.wheel, Objects.requireNonNull(getActivity()).getString(R.string.sucess_msg));
     }
 
 }

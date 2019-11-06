@@ -95,17 +95,6 @@ public class SignUpFragment extends BaseFragment implements View.OnClickListener
                 }
                 break;
         }
-
-        /*if(!TextUtils.isEmpty(mViewModel.getName()) && !TextUtils.isEmpty(mViewModel.getMobile())) {
-            Toast.makeText(getActivity(), mViewModel.getName()+" ,"+mViewModel.getMobile(), Toast.LENGTH_SHORT).show();
-            //Utilities.generateProfile(getActivity(), mViewModel);
-            //mListener.gotoHomeFragment();
-
-
-
-        } else {
-            showToast();
-        }*/
     }
 
     private void mobileVerification() {

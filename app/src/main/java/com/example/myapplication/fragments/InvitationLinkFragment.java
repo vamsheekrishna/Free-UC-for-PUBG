@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.R;
 
-public class InvitationLinkFragment extends BaseFragment {
-    private OnHomeFragmentInteractionListener mListener;
+public class InvitationLinkFragment extends HomeBaseFragment {
+    //private OnHomeFragmentInteractionListener mListener;
 
     public InvitationLinkFragment() {
         // Required empty public constructor

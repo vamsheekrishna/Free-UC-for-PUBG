@@ -19,8 +19,8 @@ import com.example.myapplication.viewmodels.EarnMoneyAdapter;
 
 import java.util.ArrayList;
 
-public class EarnMoneyFragment extends BaseFragment implements View.OnClickListener {
-    private OnHomeFragmentInteractionListener mListener;
+public class EarnMoneyFragment extends HomeBaseFragment implements View.OnClickListener {
+    //private OnHomeFragmentInteractionListener mListener;
 
     public EarnMoneyFragment() {
         // Required empty public constructor

@@ -22,7 +22,7 @@ public class AuthenticationActivity extends BaseActivity implements OnAuthentica
         fireBaseAds();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container , FreeUCButtonScreen.newInstance("", ""), "FreeUCButtonScreen");
+        fragmentTransaction.add(R.id.container , FreeUCButtonScreen.newInstance(), "FreeUCButtonScreen");
         fragmentTransaction.commit();
     }
     /*@Override

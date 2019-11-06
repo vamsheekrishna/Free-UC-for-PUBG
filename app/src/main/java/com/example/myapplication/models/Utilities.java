@@ -20,6 +20,8 @@ public class Utilities {
     private static final String MOBILE_NO = "mobile";
     private static final String SCORE = "score";
     private static final String EMAIL_ID = "email";
+    private static final String DATE = "date";
+
 
     public static void generateProfile(Context context, UserViewModel mViewModel) {
         SharedPreferences myPrefs = Objects.requireNonNull(context).getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
@@ -28,6 +30,7 @@ public class Utilities {
         edit.putString(MOBILE_NO, mViewModel.getEmail());
         edit.putString(EMAIL_ID, mViewModel.getMobile());
         edit.putInt(SCORE, mViewModel.getScore());
+        edit.putString(DATE, mViewModel.getDate());
         edit.apply();
     }
 
@@ -43,6 +46,7 @@ public class Utilities {
             userViewModel.setName(myPrefs.getString(NAME, null));
             userViewModel.setMobile(myPrefs.getString(MOBILE_NO, null));
             userViewModel.setEmail(myPrefs.getString(EMAIL_ID, null));
+            userViewModel.setDate(myPrefs.getString(DATE, null));
             userViewModel.setScore(myPrefs.getInt(SCORE, 0));
             return userViewModel;
         }
@@ -77,5 +81,13 @@ public class Utilities {
         } catch (TimeoutException e) {
         }
         return inetAddress!=null && !inetAddress.equals("");
+    }
+
+    public static void updateDateField(String currentDate, Context context) {
+        SharedPreferences myPrefs = Objects.requireNonNull(context).getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
+        Integer credit = myPrefs.getInt(SCORE, 0);
+        SharedPreferences.Editor edit = myPrefs.edit();
+        edit.putString(DATE, currentDate);
+        edit.apply();
     }
 }
