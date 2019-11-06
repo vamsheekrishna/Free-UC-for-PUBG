@@ -14,8 +14,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="rs">\u20B9</string>
-    <string name="credit">Your credit is</string>
+    <string name="rs">UC</string>
+    <string name="credit">Current balance</string>
     <string name="daily_bonus">Daily Bonus</string>
     <string name="spinner_bonus">Spinner Bonus</string>
     <string name="earn_money">Earn Money</string>
@@ -61,6 +61,7 @@
     <string name="sorry">Sorry</string>
     <string name="rate_us">Rate Us</string>
     <string name="how_it_work">How ir works</string>
+    <string name="redeem">Redeem</string>
     <!--\u20B9-->
     <string-array name="dummy">
         <item>0</item>

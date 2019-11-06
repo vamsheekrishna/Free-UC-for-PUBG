@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.myapplication.BuildConfig;
 import com.example.myapplication.R;
-import com.example.myapplication.authentication.FreeUCButtonScreen;
 import com.example.myapplication.fragments.AboutFragment;
 import com.example.myapplication.fragments.DailyBonusFragment;
 import com.example.myapplication.fragments.EarnMoneyFragment;
@@ -24,6 +23,7 @@ import com.example.myapplication.fragments.OnHomeFragmentInteractionListener;
 import com.example.myapplication.fragments.RateUsBoxFragment;
 import com.example.myapplication.fragments.SampleAddFragment;
 import com.example.myapplication.fragments.SpinnerBonusFragment;
+import com.example.myapplication.fragments.WalletFragment;
 import com.facebook.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -256,6 +256,7 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
                 //Toast.makeText(getApplicationContext(),"Back button clicked", Toast.LENGTH_SHORT).show();
                 if(t.onOptionsItemSelected(item))
                     return true;
+                break;
             case R.id.about:
                 isHamburgerAsUp();
                 Toast.makeText(MainActivity.this, "about",Toast.LENGTH_SHORT).show();
@@ -272,9 +273,15 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
         switch(id)
         {
             case R.id.wallet:
-                Toast.makeText(MainActivity.this, "Wallet",Toast.LENGTH_SHORT).show();break;
+
+                setAddMode(true);
+                replaceFragment(WalletFragment.newInstance(), "My Wallet", true);
+                break;
+                //Toast.makeText(MainActivity.this, "Wallet",Toast.LENGTH_SHORT).show();break;
             case R.id.about:
                 //enableBackArrow();
+
+                setAddMode(true);
                 replaceFragment(AboutFragment.newInstance("", ""),"How to use", true);
                 break;
             case R.id.rate_us:
@@ -285,8 +292,9 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
                 final RateUsBoxFragment dialogFragment = RateUsBoxFragment.newInstance();
                 dialogFragment.show(ft, DIALOG);
 
+                break;
                 /**/
-                Toast.makeText(MainActivity.this, "Rate us",Toast.LENGTH_SHORT).show();break;
+                //Toast.makeText(MainActivity.this, "Rate us",Toast.LENGTH_SHORT).show();break;
             default:
                 return true;
         }
