@@ -39,6 +39,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        super.onCreateView(inflater,container, savedInstanceState);
         // Inflate the layout for this fragment
         mListener.setText(String.valueOf(this.getTag()));
         FragmentHomeBinding fragmentHomeBinding =  DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false);

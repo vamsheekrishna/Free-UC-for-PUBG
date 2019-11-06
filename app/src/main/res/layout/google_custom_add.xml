@@ -1,0 +1,12 @@
+<FrameLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/simplecustom_media_placeholder"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+    android:layout_gravity="center" >
+    <com.google.android.gms.ads.formats.MediaView
+        android:id="@+id/ad_media"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="250dp"
+        android:layout_height="150dp" />
+</FrameLayout>

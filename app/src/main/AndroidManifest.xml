@@ -4,6 +4,7 @@
     package="com.example.myapplication">
 
     <application
+        android:name=".activitys.MyApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,6 +32,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".activitys.MainActivity" >
         </activity>
+        <activity android:name=".activitys.NativeAddAdvance" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

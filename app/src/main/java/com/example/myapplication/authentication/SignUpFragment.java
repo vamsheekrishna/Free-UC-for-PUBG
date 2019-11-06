@@ -34,13 +34,9 @@ import java.util.Objects;
 
 public class SignUpFragment extends BaseFragment implements View.OnClickListener {
 
-    private static final int RC_SIGN_IN = 1001;
-    //https://firebase.google.com/docs/auth/android/google-signin?utm_source=studio
     private UserViewModel mViewModel = new UserViewModel();
 
     private OnAuthenticationInteractionListener mListener;
-    private GoogleSignInClient mGoogleSignInClient;
-    CheckBox privacyClick;
     public SignUpFragment() {
         // Required empty public constructor
     }
@@ -71,28 +67,11 @@ public class SignUpFragment extends BaseFragment implements View.OnClickListener
         FragmentSignUpBinding FragmentGoogleAuthBindingImpl = DataBindingUtil.inflate(inflater,R.layout.fragment_sign_up,container,false);
         View view = FragmentGoogleAuthBindingImpl.getRoot();//inflater.inflate(R.layout.registration_fragment, container, false);
 
-        privacyClick = view.findViewById(R.id.privacy_click);
-        TextView textView = view.findViewById(R.id.privacy_text);
-        textView.setPaintFlags(textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        textView.setOnClickListener(this);
+
         view.findViewById(R.id.submit).setOnClickListener(this);
 
         // google sign in start
         FragmentGoogleAuthBindingImpl.setRegistration(mViewModel);
-
-        SignInButton signInButton = view.findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        signInButton.setOnClickListener(this);
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(Objects.requireNonNull(getActivity()), gso);
-
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
-        updateUI(account);
-
-        // Google sign-in end
 
         return view;
     }
@@ -102,26 +81,18 @@ public class SignUpFragment extends BaseFragment implements View.OnClickListener
 
         switch (view.getId()) {
             case R.id.sign_in_button:
-                if(privacyClick.isChecked()) {
+                /*if(privacyClick.isChecked()) {
                     signIn();
                 } else {
                     Toast.makeText(getActivity(), "Please Selected the Privacy text.", Toast.LENGTH_SHORT).show();
-                }
+                }*/
                 break;
             case R.id.submit:
                 if(!TextUtils.isEmpty(mViewModel.getName()) && !TextUtils.isEmpty(mViewModel.getMobile())) {
-                    if(privacyClick.isChecked()) {
-                        mobileVerification();
-                    } else {
-                        Toast.makeText(getActivity(), "Please Selected the Privacy text.", Toast.LENGTH_SHORT).show();
-                    }
+                    mobileVerification();
                 } else {
                     Toast.makeText(getActivity(), "Please enter all fields", Toast.LENGTH_SHORT).show();
                 }
-                break;
-
-            case R.id.privacy_text:
-                mListener.goToPrivacyContent();
                 break;
         }
 
@@ -138,28 +109,9 @@ public class SignUpFragment extends BaseFragment implements View.OnClickListener
     }
 
     private void mobileVerification() {
-        UserViewModel userViewModel  = new UserViewModel();
-        mListener.goToValidateOTPFragment(userViewModel);
-        Toast.makeText(getActivity(), "mobileVerification", Toast.LENGTH_SHORT).show();
-    }
-
-    private void signIn() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
-
-    private void updateUI(GoogleSignInAccount account) {
-        if(null != account) {
-            UserViewModel userViewModel  = new UserViewModel();
-            userViewModel.setName(account.getDisplayName());
-            userViewModel.setEmail(account.getEmail());
-            Utilities.generateProfile(getActivity(), userViewModel);
-            mListener.gotoHome();
-            Log.d("account: ", account.toString());
-            //Toast.makeText(getActivity(), "Name: "+account.getDisplayName(), Toast.LENGTH_SHORT).show();
-        } else {
-
-        }
+        //UserViewModel userViewModel  = new UserViewModel();
+        mListener.goToValidateOTPFragment(mViewModel);
+        //Toast.makeText(getActivity(), "mobileVerification", Toast.LENGTH_SHORT).show();
     }
 
     private void showToast() {
@@ -183,28 +135,4 @@ public class SignUpFragment extends BaseFragment implements View.OnClickListener
         mListener = null;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            handleSignInResult(task);
-        }
-    }
-
-    private void handleSignInResult(Task<GoogleSignInAccount> task) {
-        try {
-            GoogleSignInAccount account = task.getResult(ApiException.class);
-
-            // Signed in successfully, show authenticated UI.
-            updateUI(account);
-        } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w("google", "signInResult:failed code=" + e.getStatusCode());
-            updateUI(null);
-        }
-    }
 }

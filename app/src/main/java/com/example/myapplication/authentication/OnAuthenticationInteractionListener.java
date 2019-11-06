@@ -7,6 +7,9 @@ public interface OnAuthenticationInteractionListener {
     void goToValidateOTPFragment(UserViewModel userViewModel);
 
     void gotoHome();
-
+    void goToFreeUCButtonScreen();
+    void goToSignUpFragment();
     void goToPrivacyContent();
+
+    void goToSignUpOptionScreen();
 }

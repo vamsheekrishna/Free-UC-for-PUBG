@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_margin="32dp"
+    android:padding="32dp"
+    android:orientation="vertical"
+    tools:context="com.example.myapplication.authentication.FreeUCButtonScreen">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/courgette_regular"
+        android:gravity="center"
+        android:text="Sign Up"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:layout_margin="32dp"/>
+    <Button
+        android:layout_marginTop="16dp"
+        android:id="@+id/mobile"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/sign_up_submit_bg"
+        android:text="@string/mobile_verification"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="18dp"
+        android:textDirection="firstStrong" />
+
+    <!--<Button
+        android:layout_marginTop="16dp"
+        android:id="@+id/gmail"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/sign_up_submit_bg"
+        android:text="@string/gmail_verification"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold">
+    </Button>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:minHeight="50dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <CheckBox
+            android:id="@+id/privacy_click"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/privacy_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|start"
+            android:text="@string/sign_up_privacy_policy" />
+    </LinearLayout>
+
+</LinearLayout>

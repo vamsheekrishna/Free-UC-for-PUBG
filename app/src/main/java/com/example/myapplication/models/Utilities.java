@@ -15,10 +15,10 @@ import java.util.concurrent.TimeoutException;
 
 public class Utilities {
 
-    public static final String MY_PREFS = "myPrefs";
-    public static final String NAME = "name";
-    public static final String MOBILE_NO = "mobile";
-    public static final String SCORE = "score";
+    private static final String MY_PREFS = "myPrefs";
+    private static final String NAME = "name";
+    private static final String MOBILE_NO = "mobile";
+    private static final String SCORE = "score";
     private static final String EMAIL_ID = "email";
 
     public static void generateProfile(Context context, UserViewModel mViewModel) {

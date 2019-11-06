@@ -17,21 +17,25 @@ public class AuthenticationActivity extends BaseActivity implements OnAuthentica
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_authentication);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN); //show the activity in full screen
-
+        setContentView(R.layout.base_layout);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); //show the activity in full screen
+        fireBaseAds();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container , SignUpFragment.newInstance("", ""), "SignUpFragment");
+        fragmentTransaction.add(R.id.container , FreeUCButtonScreen.newInstance("", ""), "FreeUCButtonScreen");
         fragmentTransaction.commit();
     }
-
+    /*@Override
+    protected void onStart() {
+        super.onStart();
+        refreshAd(false, true);
+    }*/
     @Override
     public void goToValidateOTPFragment(UserViewModel userViewModel) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container ,ValidateOTPFragment.newInstance(userViewModel), "ValidateOTPFragment");
+        fragmentTransaction.addToBackStack("ValidateOTPFragment");
         fragmentTransaction.commit();
     }
 
@@ -43,10 +47,33 @@ public class AuthenticationActivity extends BaseActivity implements OnAuthentica
     }
 
     @Override
+    public void goToFreeUCButtonScreen() {
+
+    }
+
+    @Override
+    public void goToSignUpFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container ,SignUpFragment.newInstance("", ""), "SignUpFragment");
+        fragmentTransaction.addToBackStack("ValidateOTPFragment");
+        fragmentTransaction.commit();
+    }
+
+    @Override
     public void goToPrivacyContent() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container ,PrivacyTextFragment.newInstance());
+        fragmentTransaction.addToBackStack("PrivacyTextFragment");
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void goToSignUpOptionScreen() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container ,SignUpOptionScreen.newInstance("",""), "SignUpOptionScreen");
         fragmentTransaction.addToBackStack("PrivacyTextFragment");
         fragmentTransaction.commit();
     }

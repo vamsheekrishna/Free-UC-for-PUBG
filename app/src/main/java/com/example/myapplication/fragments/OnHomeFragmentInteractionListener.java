@@ -17,4 +17,5 @@ public interface OnHomeFragmentInteractionListener {
 
     void showInterstitialAdd();
     void showAddVideo();
+    void showNativeAdd();
 }

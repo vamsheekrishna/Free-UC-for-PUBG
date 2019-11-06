@@ -31,33 +31,6 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                /*Intent intent;
-                if (UserProfile.getInstance() != null) {
-                    UserProfile.setInstance(null);
-                }
-                final UserProfile profile = new UserProfileManager(SplashScreen.this).getUserProfileObject(UserProfileManager.DEFAULT_USER);
-                if (null == profile) {
-                    intent = new Intent(SplashScreen.this, CreateAccount.class);
-                    startActivity(intent);
-                } else {
-                    *//*if(BuildConfig.ENABLE_LANGUAGE_SELECTION) {
-                        ((OmniTropeApplication)OmniTropeApplication.getContext()).updateLocale();
-                        //SplashScreen.super.setLocale();
-                    }*//*
-                    UserProfile.setInstance(profile);
-                    //Log.d("UserProfile", " test : SplashScreen setInstance");
-                    Intent treatmentActivity = new Intent(SplashScreen.this, MyTreatmentActivity.class);
-                    treatmentActivity.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    startActivity(treatmentActivity);
-                    if(BuildConfig.ENABLE_SET_APP_LOCK) {
-
-                        Intent loginAccount = new Intent(SplashScreen.this, LoginAccount.class)
-                                .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivity(loginAccount);
-                    }
-
-                }*/
-                boolean test = Utilities.isNewUser(SplashActivity.this);
                 if(Utilities.isNewUser(SplashActivity.this)) {
                     Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                     startActivity(intent);

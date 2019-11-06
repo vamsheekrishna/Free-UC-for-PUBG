@@ -10,8 +10,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class UserViewModel extends BaseObservable implements Serializable {
-    private String name = "vam";
-    private String mobile = "7416226233";
+    private String name;
+    private String mobile;
     private String email;
     private Integer score = 0;
 

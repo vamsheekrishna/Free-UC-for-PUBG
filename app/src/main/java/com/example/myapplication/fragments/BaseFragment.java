@@ -2,6 +2,9 @@ package com.example.myapplication.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -11,14 +14,13 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.Objects;
 
 public class BaseFragment extends Fragment {
-    private static final String DIALOG = "dialog";
+    public static final String DIALOG = "dialog";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Toast.makeText(getActivity(), String.valueOf(this.getTag()), Toast.LENGTH_SHORT).show();
     }
-
-
     void showDialog(String score, int bg_image, String title) {
         FragmentTransaction ft = Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction();
         ft.addToBackStack(null);

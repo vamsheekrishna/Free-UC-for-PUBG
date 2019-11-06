@@ -45,6 +45,15 @@
     <string name="sign_up_mobile_number">Phone Number</string>
     <string name="sign_up">SignUp</string>
     <string name="sign_up_privacy_policy">Privacy Policy</string>
+    <string name="ad_attribution">Ad</string>
+
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="rate_us_header">Do you love this app..?</string>
+    <string name="rate_us_title">Rating for me</string>
+    <string name="free_uc_for_pubg">Free UC for Pubg</string>
+    <string name="gmail_verification">GMail Verification</string>
+    <string name="mobile_verification">Mobile Verification</string>
     <string-array name="dummy">
         <item>0</item>
         <item>10 \u20B9</item>
@@ -61,5 +70,4 @@
         <item>120 \u20B9</item>
         <item>130 \u20B9</item>
     </string-array>
-
 </resources>

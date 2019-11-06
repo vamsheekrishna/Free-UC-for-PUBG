@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.R;
+import com.example.myapplication.models.Utilities;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
@@ -19,6 +20,7 @@ import com.google.android.gms.ads.rewarded.RewardedAdCallback;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class DailyBonusFragment extends BaseFragment implements View.OnClickListener {
     private OnHomeFragmentInteractionListener mListener;
@@ -81,7 +83,14 @@ public class DailyBonusFragment extends BaseFragment implements View.OnClickList
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        showDialog("30", R.drawable.daily_reward_icon, Objects.requireNonNull(getActivity()).getString(R.string.sucess_msg));
+
+        Random r = new Random();
+        Integer low = 100;
+        Integer high = 200;
+        Integer result = r.nextInt(high-low) + low;
+
+        Utilities.updateCredit(result, getActivity());
+        showDialog(result.toString(), R.drawable.daily_reward_icon, Objects.requireNonNull(getActivity()).getString(R.string.sucess_msg));
     }
 
     @Override
@@ -103,31 +112,5 @@ public class DailyBonusFragment extends BaseFragment implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        /*if (rewardedAd.isLoaded()) {
-            RewardedAdCallback adCallback = new RewardedAdCallback() {
-                @Override
-                public void onRewardedAdOpened() {
-                    // Ad opened.
-                }
-
-                @Override
-                public void onRewardedAdClosed() {
-                    rewardedAd = createAndLoadRewardedAd();
-                }
-
-                @Override
-                public void onUserEarnedReward(@NonNull RewardItem reward) {
-                    // User earned reward.
-                }
-
-                @Override
-                public void onRewardedAdFailedToShow(int errorCode) {
-                    // Ad failed to display
-                }
-            };
-            rewardedAd.show(getActivity(), adCallback);
-        } else {
-            Log.d("TAG", "The rewarded ad wasn't loaded yet.");
-        }*/
     }
 }
