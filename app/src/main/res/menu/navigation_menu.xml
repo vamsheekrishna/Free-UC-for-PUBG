@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/wallet"
+    <item android:id="@+id/menu_wallet"
         android:icon="@null"
         android:title="@null"
         app:actionLayout="@layout/menu_wallet"
         >
     </item>
 
-    <item android:id="@+id/rate_us"
+    <item android:id="@+id/menu_rate_us"
         android:icon="@null"
         android:title="@null"
         app:actionLayout="@layout/menu_rate"
         >
     </item>
 
-    <item android:id="@+id/about"
+    <item android:id="@+id/menu_about"
         android:icon="@null"
         android:title="@null"
         app:actionLayout="@layout/menu_how_to_use">

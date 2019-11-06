@@ -2,11 +2,16 @@ package com.example.myapplication.activitys;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -24,6 +29,7 @@ import com.example.myapplication.fragments.RateUsBoxFragment;
 import com.example.myapplication.fragments.SampleAddFragment;
 import com.example.myapplication.fragments.SpinnerBonusFragment;
 import com.example.myapplication.fragments.WalletFragment;
+import com.example.myapplication.models.Utilities;
 import com.facebook.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -45,6 +51,7 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +67,6 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
         fragmentTransaction.add(R.id.container, HomeFragment.newInstance(), "Home");
         fragmentTransaction.commit();
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -82,7 +82,13 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
         nv.setNavigationItemSelectedListener(this);
 
     }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        TextView title  = findViewById(R.id.wallet_count);
+        title.setText(String.format(getString(R.string.uc_count), Objects.requireNonNull(Utilities.getUser(this)).getScore()));
+        return true;
 
+    }
 
     @Override
     protected void onDestroy() {
@@ -257,7 +263,7 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
                 if(t.onOptionsItemSelected(item))
                     return true;
                 break;
-            case R.id.about:
+            case R.id.menu_about:
                 isHamburgerAsUp();
                 Toast.makeText(MainActivity.this, "about",Toast.LENGTH_SHORT).show();
                 onBackPressed();
@@ -272,21 +278,19 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
         int id = menuItem.getItemId();
         switch(id)
         {
-            case R.id.wallet:
+            case R.id.menu_wallet:
 
                 setAddMode(true);
                 replaceFragment(WalletFragment.newInstance(), "My Wallet", true);
                 break;
                 //Toast.makeText(MainActivity.this, "Wallet",Toast.LENGTH_SHORT).show();break;
-            case R.id.about:
+            case R.id.menu_about:
                 //enableBackArrow();
 
                 setAddMode(true);
                 replaceFragment(AboutFragment.newInstance("", ""),"How to use", true);
                 break;
-            case R.id.rate_us:
-
-
+            case R.id.menu_rate_us:
                 FragmentTransaction ft = Objects.requireNonNull(this).getSupportFragmentManager().beginTransaction();
                 ft.addToBackStack(null);
                 final RateUsBoxFragment dialogFragment = RateUsBoxFragment.newInstance();
@@ -301,7 +305,6 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
         dl.closeDrawer(nv);
         return true;
     }
-
     @Override
     public void onBackPressed() {
         /*Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);

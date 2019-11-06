@@ -36,13 +36,13 @@
         app:layout_constraintHorizontal_bias=".5" />
 
     <TextView
+        android:id="@+id/wallet_count"
         android:layout_margin="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/menu_text"
+        android:layout_toEndOf="@+id/menu_text"
         android:gravity="end"
-        android:text="12 UC"
         android:textColor="@color/read"
         android:textSize="14sp"
         android:textStyle="bold"
