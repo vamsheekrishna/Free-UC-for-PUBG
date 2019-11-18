@@ -14,6 +14,8 @@ public class UserViewModel extends BaseObservable implements Serializable {
     private String mobile;
     private String email;
     private String date;
+    private String royalPassDate;
+    private String SpinnerDate;
     private Integer score = 0;
 
     public String getName() {
@@ -52,7 +54,23 @@ public class UserViewModel extends BaseObservable implements Serializable {
         return date;
     }
 
+    public String getSpinnerDate() {
+        return SpinnerDate;
+    }
+
+    public void setSpinnerDate(String spinnerDate) {
+        SpinnerDate = spinnerDate;
+    }
+
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getRoyalPassDate() {
+        return royalPassDate;
+    }
+
+    public void setRoyalPassDate(String royalPassDate) {
+        this.royalPassDate = royalPassDate;
     }
 }

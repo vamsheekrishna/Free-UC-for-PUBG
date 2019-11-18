@@ -2,14 +2,13 @@ package com.example.myapplication.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.myapplication.R;
 import com.example.myapplication.models.Utilities;
@@ -18,16 +17,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
-public class DailyBonusFragment extends HomeBaseFragment implements View.OnClickListener {
+public class FreeRoyalPassFragment extends HomeBaseFragment implements View.OnClickListener {
 
-    public static final int DAYILY_UC_LIMIT = 1;
-
-    public DailyBonusFragment() {
+    public FreeRoyalPassFragment() {
         // Required empty public constructor
     }
 
-    public static DailyBonusFragment newInstance() {
-        return new DailyBonusFragment();
+    public static FreeRoyalPassFragment newInstance() {
+        return new FreeRoyalPassFragment();
     }
 
     @Override
@@ -40,17 +37,21 @@ public class DailyBonusFragment extends HomeBaseFragment implements View.OnClick
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mListener.setText(String.valueOf(this.getTag()));
-        View view;
         String currentDate = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
-        if(Utilities.isNewDay(currentDate, Objects.requireNonNull(Utilities.getUser(getActivity())).getDate())) {
-            Utilities.updateDateField(currentDate, getActivity());
-            Utilities.updateCredit(DAYILY_UC_LIMIT, getActivity());
-            view = inflater.inflate(R.layout.congratulations_screen, container, false);
-            ((TextView)view.findViewById(R.id.uc_count)).setText(String.format(getString(R.string.uc_count), DAYILY_UC_LIMIT));
+        View view;
+        if(isNewDay(currentDate)) {
+            Utilities.updateRoyalPassDate(currentDate, getActivity());
+            view = inflater.inflate(R.layout.free_royal_pass_screen, container, false);
+            view.findViewById(R.id.back).setOnClickListener(this);
         } else {
             view = inflater.inflate(R.layout.daily_limit_error, container, false);
         }
         return view;
+    }
+
+    private boolean isNewDay(String currentDate) {
+        String date = Objects.requireNonNull(Utilities.getUser(getActivity())).getRoyalPassDate();
+        return null == date || !date.equals(currentDate);
     }
 
     /*public RewardedAd createAndLoadRewardedAd() {
@@ -102,5 +103,6 @@ public class DailyBonusFragment extends HomeBaseFragment implements View.OnClick
 
     @Override
     public void onClick(View view) {
+        Objects.requireNonNull(getActivity()).onBackPressed();
     }
 }

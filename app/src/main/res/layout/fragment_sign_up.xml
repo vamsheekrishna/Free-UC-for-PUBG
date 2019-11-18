@@ -166,12 +166,12 @@
             <Button
                 android:id="@+id/submit"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
                 android:layout_marginTop="8dp"
+                android:layout_height="45dp"
                 android:background="@drawable/sign_up_submit_bg"
-                android:text="@string/sign_up"
                 android:textColor="@color/white"
                 android:textSize="24sp"
+                android:text="@string/sign_up"
                 android:textStyle="bold">
 
             </Button>

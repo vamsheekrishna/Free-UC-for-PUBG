@@ -23,6 +23,7 @@ import com.example.myapplication.fragments.AboutFragment;
 import com.example.myapplication.fragments.DailyBonusFragment;
 import com.example.myapplication.fragments.EarnMoneyFragment;
 import com.example.myapplication.fragments.CongratulationScreen;
+import com.example.myapplication.fragments.FreeRoyalPassFragment;
 import com.example.myapplication.fragments.HomeFragment;
 import com.example.myapplication.fragments.OnHomeFragmentInteractionListener;
 import com.example.myapplication.fragments.RateUsBoxFragment;
@@ -47,11 +48,10 @@ import static com.example.myapplication.fragments.BaseFragment.DIALOG;
 public class MainActivity extends BaseActivity implements OnHomeFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
     AdView adView;
-
+    TextView mUCCount;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
-    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +84,11 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
     }
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        TextView title  = findViewById(R.id.wallet_count);
-        title.setText(String.format(getString(R.string.uc_count), Objects.requireNonNull(Utilities.getUser(this)).getScore()));
+        mUCCount  = findViewById(R.id.wallet_count);
+        mUCCount.setText(String.format(getString(R.string.uc_count), Objects.requireNonNull(Utilities.getUser(this)).getScore()));
         return true;
 
     }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -140,7 +139,7 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
     @Override
     public void goToFreeRoyalPassScreen() {
         setAddMode(true);
-        replaceFragment(CongratulationScreen.newInstance(2),getString(R.string.adds_demo), true);
+        replaceFragment(FreeRoyalPassFragment.newInstance(),"Free Royal Pass", true);
     }
 
     @Override
@@ -200,7 +199,8 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
             @Override
             public void onRewardedAdClosed() {
                 // Ad closed.
-                goToDailyBonus();
+                //goToDailyBonus();
+                goToSpinnerBonus();
                 Toast.makeText(Objects.requireNonNull(MainActivity.this), "Ad closed.", Toast.LENGTH_SHORT).show();
             }
 
@@ -217,8 +217,7 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
             }
         };
 
-        final RewardedAd rewardedAd = new RewardedAd(Objects.requireNonNull(MainActivity.this),
-                "ca-app-pub-3940256099942544/5224354917");
+        final RewardedAd rewardedAd = new RewardedAd(Objects.requireNonNull(MainActivity.this), "ca-app-pub-3940256099942544/5224354917");
 
         RewardedAdLoadCallback adLoadCallback = new RewardedAdLoadCallback() {
             @Override
@@ -266,10 +265,10 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
             case R.id.menu_about:
                 isHamburgerAsUp();
                 Toast.makeText(MainActivity.this, "about",Toast.LENGTH_SHORT).show();
-                onBackPressed();
                 break;
-
         }
+
+        onBackPressed();
         return super.onOptionsItemSelected(item);
     }
 

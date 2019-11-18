@@ -63,6 +63,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintTop_toBottomOf="@+id/container">
-
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

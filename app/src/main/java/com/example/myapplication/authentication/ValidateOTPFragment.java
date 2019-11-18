@@ -2,7 +2,6 @@ package com.example.myapplication.authentication;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -19,14 +18,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.myapplication.BuildConfig;
 import com.example.myapplication.R;
 import com.example.myapplication.fragments.BaseFragment;
 import com.example.myapplication.models.UserViewModel;
 import com.example.myapplication.models.Utilities;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
@@ -36,10 +33,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class ValidateOTPFragment extends BaseFragment implements View.OnClickListener {
@@ -55,8 +48,8 @@ public class ValidateOTPFragment extends BaseFragment implements View.OnClickLis
     private static final int STATE_CODE_SENT = 2;
     private static final int STATE_VERIFY_FAILED = 3;
     private static final int STATE_VERIFY_SUCCESS = 4;
-    private static final int STATE_SIGNIN_FAILED = 5;
-    private static final int STATE_SIGNIN_SUCCESS = 6;
+    private static final int STATE_SIGN_IN_FAILED = 5;
+    private static final int STATE_SIGN_IN_SUCCESS = 6;
 
     //private String mPhoneNumber = "";
     private String mParam2;
@@ -283,7 +276,7 @@ public class ValidateOTPFragment extends BaseFragment implements View.OnClickLis
 
                             FirebaseUser user = task.getResult().getUser();
                             // [START_EXCLUDE]
-                            updateUI(STATE_SIGNIN_SUCCESS, user);
+                            updateUI(STATE_SIGN_IN_SUCCESS, user);
                             // [END_EXCLUDE]
                         } else {
                             // Sign in failed, display a message and update the UI
@@ -296,7 +289,7 @@ public class ValidateOTPFragment extends BaseFragment implements View.OnClickLis
                             }
                             // [START_EXCLUDE silent]
                             // Update UI
-                            updateUI(STATE_SIGNIN_FAILED);
+                            updateUI(STATE_SIGN_IN_FAILED);
                             // [END_EXCLUDE]
                         }
                     }
@@ -315,7 +308,7 @@ public class ValidateOTPFragment extends BaseFragment implements View.OnClickLis
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
-            updateUI(STATE_SIGNIN_SUCCESS, user);
+            updateUI(STATE_SIGN_IN_SUCCESS, user);
         } else {
             updateUI(STATE_INITIALIZED);
         }
@@ -370,13 +363,13 @@ public class ValidateOTPFragment extends BaseFragment implements View.OnClickLis
                 }
 
                 break;
-            case STATE_SIGNIN_FAILED:
+            case STATE_SIGN_IN_FAILED:
                 // No-op, handled by sign-in check
                 mDetailText.setText(R.string.status_sign_in_failed);
                 mDetailText.setTextColor(Color.parseColor("#dd2c00"));
                 progressBar.setVisibility(View.INVISIBLE);
                 break;
-            case STATE_SIGNIN_SUCCESS:
+            case STATE_SIGN_IN_SUCCESS:
                 // Np-op, handled by sign-in check
                 //mStatusText.setText(R.string.signed_in);
                 break;

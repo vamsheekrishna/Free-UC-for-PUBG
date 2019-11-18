@@ -17,6 +17,8 @@ import com.example.myapplication.models.Utilities;
 import com.example.myapplication.models.EnrollViewDataItem;
 import com.example.myapplication.viewmodels.EnrollViewAdapter;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
@@ -80,7 +82,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 //mListener.showAddVideo();
                 mListener.goToDailyBonus();
             } else if (enrollViewDataItem.getName().equals(getString(R.string.spinner_bonus))) {
-                mListener.goToSpinnerBonus();
+                String currentDate = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
+                if(Utilities.isNewDay(currentDate, Objects.requireNonNull(Utilities.getUser(getActivity())).getSpinnerDate())) {
+                    Utilities.updateSpinnerDate(currentDate, getActivity());
+                    mListener.goToSpinnerBonus();
+                } else {
+                    mListener.showAddVideo();
+                }
             } else if (enrollViewDataItem.getName().equals(getString(R.string.earn_money))) {
                 mListener.goToEarnMoney();
             } else if (enrollViewDataItem.getName().equals(getString(R.string.invitation_link))) {

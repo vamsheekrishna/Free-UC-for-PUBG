@@ -1,5 +1,6 @@
 package com.example.myapplication.activitys;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -41,6 +42,7 @@ public class BaseActivity extends AppCompatActivity {
 
     private UnifiedNativeAd nativeAd;
     private boolean isShowNativeAdd = true;
+    private boolean isMute = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class BaseActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
 
@@ -171,8 +174,8 @@ public class BaseActivity extends AppCompatActivity {
                     });
         }
 
-        //VideoOptions videoOptions = new VideoOptions.Builder().setStartMuted(startVideoAdsMuted.isChecked()).build();
-        VideoOptions videoOptions = new VideoOptions.Builder().setStartMuted(false).build();
+        VideoOptions videoOptions = new VideoOptions.Builder().setStartMuted(isMute).build();
+        //VideoOptions videoOptions = new VideoOptions.Builder().setStartMuted(false).build();
 
         NativeAdOptions adOptions = new NativeAdOptions.Builder()
                 .setVideoOptions(videoOptions)

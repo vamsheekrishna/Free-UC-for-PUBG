@@ -3,6 +3,8 @@ package com.example.myapplication.models;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.myapplication.activitys.MainActivity;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Objects;
@@ -21,6 +23,8 @@ public class Utilities {
     private static final String SCORE = "score";
     private static final String EMAIL_ID = "email";
     private static final String DATE = "date";
+    private static final String ROYAL_PASS_DATE = "royal_pass_date";
+    private static final String SPINNER_DATE = "spinner";
 
 
     public static void generateProfile(Context context, UserViewModel mViewModel) {
@@ -47,6 +51,8 @@ public class Utilities {
             userViewModel.setMobile(myPrefs.getString(MOBILE_NO, null));
             userViewModel.setEmail(myPrefs.getString(EMAIL_ID, null));
             userViewModel.setDate(myPrefs.getString(DATE, null));
+            userViewModel.setRoyalPassDate(myPrefs.getString(ROYAL_PASS_DATE, null));
+            userViewModel.setSpinnerDate(myPrefs.getString(SPINNER_DATE, null));
             userViewModel.setScore(myPrefs.getInt(SCORE, 0));
             return userViewModel;
         }
@@ -58,6 +64,7 @@ public class Utilities {
         Integer credit = myPrefs.getInt(SCORE, 0);
         SharedPreferences.Editor edit = myPrefs.edit();
         edit.putInt(SCORE, credit+integer);
+        ((MainActivity)context).invalidateOptionsMenu();
         edit.apply();
     }
 
@@ -85,9 +92,25 @@ public class Utilities {
 
     public static void updateDateField(String currentDate, Context context) {
         SharedPreferences myPrefs = Objects.requireNonNull(context).getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
-        Integer credit = myPrefs.getInt(SCORE, 0);
         SharedPreferences.Editor edit = myPrefs.edit();
         edit.putString(DATE, currentDate);
         edit.apply();
+    }
+
+    public static void updateRoyalPassDate(String currentDate, Context context) {
+        SharedPreferences myPrefs = Objects.requireNonNull(context).getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = myPrefs.edit();
+        edit.putString(ROYAL_PASS_DATE, currentDate);
+        edit.apply();
+    }
+    public static void updateSpinnerDate(String currentDate, Context context) {
+        SharedPreferences myPrefs = Objects.requireNonNull(context).getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = myPrefs.edit();
+        edit.putString(SPINNER_DATE, currentDate);
+        edit.apply();
+    }
+    public static boolean isNewDay(String currentDate, String date) {
+        //String date = Objects.requireNonNull(Utilities.getUser(getActivity())).getDate();
+        return null == date || !date.equals(currentDate);
     }
 }
