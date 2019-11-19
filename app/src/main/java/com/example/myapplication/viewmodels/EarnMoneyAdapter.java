@@ -8,16 +8,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.models.EarnMoneyModel;
+import com.example.myapplication.models.AppInfoModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class EarnMoneyAdapter extends RecyclerView.Adapter<EarnMoneyViewHolder> {
 
-    private ArrayList<EarnMoneyModel> earnMoneyModels;
+    private List<AppInfoModel> earnMoneyModels;
     private View.OnClickListener onClickListener;
-    public EarnMoneyAdapter(ArrayList<EarnMoneyModel> _earnMoneyModels, View.OnClickListener _onClickListener) {
+    public EarnMoneyAdapter(List<AppInfoModel> _earnMoneyModels, View.OnClickListener _onClickListener) {
         earnMoneyModels = _earnMoneyModels;
         onClickListener = _onClickListener;
 

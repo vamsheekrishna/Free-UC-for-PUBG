@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -17,22 +16,25 @@ public class CallReceiver extends BroadcastReceiver {
 
         Bundle bundle = intent.getExtras();
         String phoneNumber= bundle.getString("incoming_number");
-        Toast.makeText(context, "incoming_number: "+phoneNumber, Toast.LENGTH_SHORT).show();
+        displayAlert(context);
+    }
 
-        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-
-        alertDialog.setTitle("REMINDER!");
-        alertDialog.setMessage("Turn off alarm by pressing off");
-
-        alertDialog.setNegativeButton("Off", new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(context, "OFF", Toast.LENGTH_SHORT).show();
-            }
-        });
-        //alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-        alertDialog.show();
-        // line you have to add
-        //alertDialog.getWindow().setType(WindowManager.LayoutParams.TYPE_TOAST);
+    private void displayAlert(Context context)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("Are you sure you want to exit?").setCancelable(
+                false).setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                }).setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 }
