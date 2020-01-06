@@ -28,7 +28,7 @@ public class EarnMoneyAdapter extends RecyclerView.Adapter<EarnMoneyViewHolder> 
     public EarnMoneyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.earn_money_row_item, parent, false);
         EarnMoneyViewHolder viewHolder = new EarnMoneyViewHolder(view, parent.getContext());
-        viewHolder.installedStatusView.setOnClickListener(onClickListener);
+        viewHolder.view.setOnClickListener(onClickListener);
         return viewHolder;
     }
 

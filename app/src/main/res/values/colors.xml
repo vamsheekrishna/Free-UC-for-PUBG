@@ -38,4 +38,5 @@
     <color name="sign_up_bg_white">#ffffff</color>
     <color name="sign_up_submit">#152975</color>
     <color name="gray">#6E6E6E</color>
+    <color name="splash_bg">#16334D</color>
 </resources>

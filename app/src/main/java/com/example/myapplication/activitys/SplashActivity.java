@@ -21,8 +21,6 @@ import com.example.myapplication.models.Utilities;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,19 +38,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(Utilities.isNewUser(SplashActivity.this)) {
-                    if (ActivityCompat.checkSelfPermission(SplashActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                        if (ActivityCompat.shouldShowRequestPermissionRationale(SplashActivity.this,
-                                Manifest.permission.READ_PHONE_STATE)) {
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
 
-                        } else {
-                            ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE},
-                                    MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
-                        }
-                    } else {
-
-                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }
                 } else {
                     Intent intent = new Intent(SplashActivity.this, AuthenticationActivity.class);
                     startActivity(intent);
@@ -60,20 +48,6 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        if (requestCode == MY_PERMISSIONS_REQUEST_READ_PHONE_STATE) {
-
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
-            } else {
-                Toast.makeText(this,"Please accept the call Permission.",Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 
 }

@@ -53,6 +53,5 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:text="Video status: "
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
     </LinearLayout>
 </ScrollView>

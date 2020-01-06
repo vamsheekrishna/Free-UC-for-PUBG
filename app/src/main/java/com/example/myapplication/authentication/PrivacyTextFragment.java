@@ -4,11 +4,14 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.fragments.BaseFragment;
@@ -39,8 +42,14 @@ public class PrivacyTextFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_privacy_text, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_privacy_text, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        WebView webView = view.findViewById(R.id.web_view);
+        webView.loadUrl("file:///android_asset/tandc.html");
     }
 
     @Override

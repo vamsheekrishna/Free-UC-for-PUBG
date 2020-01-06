@@ -30,16 +30,21 @@ android {
     }
     productFlavors {
         Demo {
-            applicationId 'com.free.uc.pubg.test'
-            resValue "string", "app_name", "Free UC PUBG"
+            applicationId 'com.freeuc.royalpass.test'
+            resValue "string", "app_name", "Free UC"
             buildConfigField "String", "REWARDED_ADD", "\"ca-app-pub-3940256099942544/5224354917\""
             buildConfigField "String", "INTERSTITIAL_ADD", "\"ca-app-pub-3940256099942544/1033173712\""
             buildConfigField "String", "BANNER_ADD", "\"ca-app-pub-3940256099942544/6300978111\""
+
         }
 
         Live {
-            applicationId 'com.free.uc.pubg'
-            resValue "string", "app_name", "Free UC PUBG"
+            applicationId 'com.freeuc.royalpass'
+            resValue "string", "app_name", "Free UC"
+            buildConfigField "String", "REWARDED_ADD", "\"ca-app-pub-3940256099942544/5224354917\""
+            buildConfigField "String", "INTERSTITIAL_ADD", "\"ca-app-pub-3940256099942544/1033173712\""
+            buildConfigField "String", "BANNER_ADD", "\"ca-app-pub-3940256099942544/6300978111\""
+
         }
     }
 }
@@ -54,18 +59,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.airbnb.android:lottie:2.8.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel:2.1.0'
     implementation 'com.google.android.gms:play-services-ads:18.3.0'
-    implementation 'com.google.firebase:firebase-auth:19.1.0'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.facebook.android:audience-network-sdk:5.6.0'
     implementation 'com.androidsx:rate-me:4.0.3'
-
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }

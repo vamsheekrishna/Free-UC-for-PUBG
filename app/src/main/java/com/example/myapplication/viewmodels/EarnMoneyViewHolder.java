@@ -19,9 +19,11 @@ public class EarnMoneyViewHolder extends RecyclerView.ViewHolder {
     private TextView appName;
     public ImageView installedStatusView;
     private Context context;
+    View view;
     public EarnMoneyViewHolder(@NonNull View itemView, Context _context) {
         super(itemView);
         context = _context;
+        view = itemView;
         appLogo = itemView.findViewById(R.id.app_image);
         appName = itemView.findViewById(R.id.app_name);
         installedStatusView = itemView.findViewById(R.id.status);
@@ -29,12 +31,14 @@ public class EarnMoneyViewHolder extends RecyclerView.ViewHolder {
 
     public void bind(AppInfoModel earnMoneyModel) {
         appName.setText(earnMoneyModel.getName());
-        Picasso.with(context).load(earnMoneyModel.getURL()).placeholder(R.drawable.ic_launcher_background).memoryPolicy(MemoryPolicy.NO_CACHE).into(appLogo);
-        installedStatusView.setTag(earnMoneyModel);
+        Picasso.get().load(earnMoneyModel.getURL()).placeholder(R.drawable.ic_launcher_background).memoryPolicy(MemoryPolicy.NO_CACHE).into(appLogo);
+        view.setTag(earnMoneyModel);
         if(earnMoneyModel.isAppInstalled(context)) {
             installedStatusView.setImageDrawable(context.getResources().getDrawable(R.drawable.tick));
+            view.setClickable(false);
         } else {
             installedStatusView.setImageDrawable(context.getResources().getDrawable(R.drawable.download));
+            view.setClickable(true);
         }
     }
 }

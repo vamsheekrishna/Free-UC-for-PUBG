@@ -32,38 +32,38 @@ public class AddsDemoActivity extends BaseActivity implements View.OnClickListen
             public void onRewardedAdLoaded() {
                 // Ad successfully loaded.
                 rewardedAd.show(AddsDemoActivity.this, adCallback);
-                Toast.makeText(AddsDemoActivity.this, "Ad successfully loaded.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddsDemoActivity.this, "Ad successfully loaded.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedAdFailedToLoad(int errorCode) {
                 // Ad failed to load.
-                Toast.makeText(AddsDemoActivity.this, "Ad failed to load.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddsDemoActivity.this, "Ad failed to load.", Toast.LENGTH_SHORT).show();
             }
         };
 
         adCallback = new RewardedAdCallback() {
             @Override
             public void onRewardedAdOpened() {
-                Toast.makeText(AddsDemoActivity.this, "onRewardedAdOpened", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddsDemoActivity.this, "onRewardedAdOpened", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedAdClosed() {
                 // Ad closed.
-                Toast.makeText(AddsDemoActivity.this, "Ad closed.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddsDemoActivity.this, "Ad closed.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onUserEarnedReward(@NonNull RewardItem reward) {
                 // User earned reward.
-                Toast.makeText(AddsDemoActivity.this, "User earned reward.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddsDemoActivity.this, "User earned reward.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedAdFailedToShow(int errorCode) {
                 // Ad failed to display
-                Toast.makeText(AddsDemoActivity.this, "Ad failed to display.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddsDemoActivity.this, "Ad failed to display.", Toast.LENGTH_SHORT).show();
             }
         };
 

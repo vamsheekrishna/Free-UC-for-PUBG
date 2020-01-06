@@ -80,10 +80,12 @@ public class SpinnerBonusFragment extends HomeBaseFragment implements SpinningWh
 
     @Override
     public void onStopRotation(String item) {
-        String[] temp = item.split(" ");
-        //Toast.makeText(getActivity(), item, Toast.LENGTH_LONG).show();
-        Utilities.updateCredit(Integer.parseInt(temp[0]), getActivity());
-        mListener.showCongratsFragment(Integer.parseInt(temp[0]));
+        if(null != mListener) {
+            String[] temp = item.split(" ");
+            //Toast.makeText(getActivity(), item, Toast.LENGTH_LONG).show();
+            Utilities.updateCredit(Integer.parseInt(temp[0]), getActivity());
+            mListener.showCongratsFragment(Integer.parseInt(temp[0]));
+        }
         //Objects.requireNonNull(getActivity()).onBackPressed();
         //showDialog( temp[0],  R.drawable.wheel, Objects.requireNonNull(getActivity()).getString(R.string.sucess_msg));
     }

@@ -15,9 +15,9 @@
         >
     </item>
 
-    <item android:id="@+id/menu_about"
+<!--    <item android:id="@+id/menu_about"
         android:icon="@null"
         android:title="@null"
         app:actionLayout="@layout/menu_how_to_use">
-    </item>
+    </item>-->
 </menu>

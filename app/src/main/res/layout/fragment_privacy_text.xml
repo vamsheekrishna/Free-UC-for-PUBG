@@ -10,10 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Close"/>
-    <TextView
+    <WebView
+        android:id="@+id/web_view"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/close"
+        android:layout_alignParentBottom="true"
         android:text="Sample privacy content"/>
 
 </RelativeLayout>

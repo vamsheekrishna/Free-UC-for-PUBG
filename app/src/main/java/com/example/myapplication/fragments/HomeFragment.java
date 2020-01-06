@@ -1,6 +1,7 @@
 package com.example.myapplication.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.callerdialog.CallerActivity;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 import com.example.myapplication.models.Utilities;
 import com.example.myapplication.models.EnrollViewDataItem;
@@ -76,6 +78,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     public void onClick(View view) {
         if(view.getId() == R.id.header) {
             mListener.goToFreeRoyalPassScreen();
+            /*Intent intent = new Intent(getContext(), CallerActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Objects.requireNonNull(getActivity()).startActivity(intent);*/
         } else {
             EnrollViewDataItem enrollViewDataItem = (EnrollViewDataItem) view.getTag();
             if (enrollViewDataItem.getName().equals(getString(R.string.daily_bonus))) {

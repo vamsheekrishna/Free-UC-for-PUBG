@@ -18,8 +18,8 @@
     <string name="credit">Current balance</string>
     <string name="daily_bonus">Daily Bonus</string>
     <string name="spinner_bonus">Spinner Bonus</string>
-    <string name="earn_money">Earn Money</string>
-    <string name="invitation_link">Invitation Link</string>
+    <string name="earn_money">Earn UC</string>
+    <string name="invitation_link">Invite &amp; earn UC</string>
     <string name="adds_demo">Adds Demo</string>
     <string name="rotate">Rotate</string>
     <string name="sucess_msg">congratulations you have won rs</string>

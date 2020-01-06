@@ -13,7 +13,7 @@ public class EnrollViewHolder extends RecyclerView.ViewHolder {
         mItemView = enrollViewItemBinding;
         view = enrollViewItemBinding.getRoot();
     }
-    public void bind(Object obj) {
+    void bind(Object obj) {
         mItemView.setVariable(com.example.myapplication.BR.enrollViewItem, obj);
         view.setTag(obj);
     }

@@ -2,39 +2,30 @@ package com.example.myapplication;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 
-import androidx.appcompat.app.AlertDialog;
+import com.example.myapplication.callerdialog.CallerActivity;
+import com.example.myapplication.callerdialog.PhoneCallListener;
 
 public class CallReceiver extends BroadcastReceiver {
-
+    PhoneCallListener customPhoneListener;
     @Override
     public void onReceive(final Context context, Intent intent) {
 
-        Bundle bundle = intent.getExtras();
-        String phoneNumber= bundle.getString("incoming_number");
-        displayAlert(context);
-    }
+        TelephonyManager telephony = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+        if( null == customPhoneListener)
+            customPhoneListener = new PhoneCallListener(context);
 
-    private void displayAlert(Context context)
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage("Are you sure you want to exit?").setCancelable(
-                false).setPositiveButton("Yes",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                }).setNegativeButton("No",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
+        assert telephony != null;
+        telephony.listen(customPhoneListener, PhoneStateListener.LISTEN_CALL_STATE);
+
+        Bundle bundle = intent.getExtras();
+        assert bundle != null;
+        String phoneNumber= bundle.getString("incoming_number");
+        Log.d("CallReceiver", "onReceive"+phoneNumber);
     }
 }

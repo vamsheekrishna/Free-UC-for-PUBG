@@ -84,6 +84,8 @@ public class EarnMoneyFragment extends HomeBaseFragment implements View.OnClickL
 
     private void updateRecycleView(Response<AppInfos> response) {
         AppInfos appInfos = response.body();
+        assert appInfos != null;
+        appInfos.removeInstalledApps(Objects.requireNonNull(getActivity()));
         earnMoneyViewModel.getAppInfoModels().setValue(appInfos);
     }
 
@@ -99,7 +101,7 @@ public class EarnMoneyFragment extends HomeBaseFragment implements View.OnClickL
             @Override
             public void onFailure(Call<AppInfos> call, Throwable t) {
                 Log.d("onFailure","onFailure: "+t.getMessage());
-                Toast.makeText(getActivity(), "onFailure"+t.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "onFailure"+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -141,10 +143,10 @@ public class EarnMoneyFragment extends HomeBaseFragment implements View.OnClickL
     public void onClick(View view) {
         AppInfoModel earnMoneyModel = (AppInfoModel) view.getTag();
 
-        Toast.makeText(getActivity(), "App Name: "+earnMoneyModel.getName(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "App Name: "+earnMoneyModel.getName(),Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("market://details?id="+earnMoneyModel.getURL()));
+        intent.setData(Uri.parse("market://details?id="+earnMoneyModel.getAppPackage()));
         startActivity(intent);
         Utilities.updateCredit(1, getContext());
     }

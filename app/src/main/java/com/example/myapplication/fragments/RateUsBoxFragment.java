@@ -18,8 +18,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.FragmentMyCustomDialogBinding;
-import com.example.myapplication.models.EnrollViewDataItem;
 
 public class RateUsBoxFragment extends DialogFragment implements View.OnClickListener {
 
@@ -56,7 +54,7 @@ public class RateUsBoxFragment extends DialogFragment implements View.OnClickLis
                 try {
                     startActivity(myAppLinkToMarket);
                 } catch (ActivityNotFoundException e) {
-                    Toast.makeText(getActivity(), " unable to find market app", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getActivity(), " unable to find market app", Toast.LENGTH_LONG).show();
                 }
                 dismiss();
                 break;

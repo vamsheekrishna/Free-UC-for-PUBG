@@ -2,6 +2,7 @@ package com.example.myapplication.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.example.myapplication.activitys.MainActivity;
 
@@ -60,12 +61,16 @@ public class Utilities {
     }
 
     public static void updateCredit(Integer integer, Context context) {
-        SharedPreferences myPrefs = Objects.requireNonNull(context).getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
-        Integer credit = myPrefs.getInt(SCORE, 0);
-        SharedPreferences.Editor edit = myPrefs.edit();
-        edit.putInt(SCORE, credit+integer);
-        ((MainActivity)context).invalidateOptionsMenu();
-        edit.apply();
+        try {
+            SharedPreferences myPrefs = Objects.requireNonNull(context).getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
+            Integer credit = myPrefs.getInt(SCORE, 0);
+            SharedPreferences.Editor edit = myPrefs.edit();
+            edit.putInt(SCORE, credit+integer);
+            ((MainActivity)context).invalidateOptionsMenu();
+            edit.apply();
+        } catch (Exception ex) {
+            Log.d("Exception", "Exception: "+ex.getMessage());
+        }
     }
 
     public static boolean internetConnectionAvailable(int timeOut) {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_margin="16dp"
+        android:padding="16dp"
+        android:gravity="center"
+        android:text="Share the application and you will earn 1 UC"
+        android:textSize="16dp"
+        android:textColor="@color/sign_up_submit"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/submit"
+            android:minWidth="150dp"
+            android:text="Share link."
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            android:background="@drawable/sign_up_submit_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</LinearLayout>

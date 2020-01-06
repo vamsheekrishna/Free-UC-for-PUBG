@@ -81,25 +81,25 @@ public class SampleAddFragment extends BaseFragment implements View.OnClickListe
         final RewardedAdCallback adCallback = new RewardedAdCallback() {
             @Override
             public void onRewardedAdOpened() {
-                Toast.makeText(Objects.requireNonNull(getActivity()), "onRewardedAdOpened", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(getActivity()), "onRewardedAdOpened", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedAdClosed() {
                 // Ad closed.
-                Toast.makeText(Objects.requireNonNull(getActivity()), "Ad closed.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(getActivity()), "Ad closed.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onUserEarnedReward(@NonNull RewardItem reward) {
                 // User earned reward.
-                Toast.makeText(Objects.requireNonNull(getActivity()), "User earned reward.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(getActivity()), "User earned reward.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedAdFailedToShow(int errorCode) {
                 // Ad failed to display
-                Toast.makeText(Objects.requireNonNull(getActivity()), "Ad failed to display.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(getActivity()), "Ad failed to display.", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -112,14 +112,14 @@ public class SampleAddFragment extends BaseFragment implements View.OnClickListe
                 // Ad successfully loaded.
                 progressdialog.dismiss();
                 rewardedAd.show(Objects.requireNonNull(getActivity()), adCallback);
-                Toast.makeText(Objects.requireNonNull(getActivity()), "Ad successfully loaded.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(getActivity()), "Ad successfully loaded.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedAdFailedToLoad(int errorCode) {
                 // Ad failed to load.
                 progressdialog.dismiss();
-                Toast.makeText(Objects.requireNonNull(getActivity()), "Ad failed to load.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(getActivity()), "Ad failed to load.", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -203,22 +203,22 @@ public class SampleAddFragment extends BaseFragment implements View.OnClickListe
             @Override
             public void onAdLoaded() {
                 showInterstitial(mInterstitialAd);
-                Toast.makeText(getActivity(), "onAdLoaded()", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "onAdLoaded()", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
-                Toast.makeText(getActivity(),
+                /*Toast.makeText(getActivity(),
                         "onAdFailedToLoad() with error code: " + errorCode,
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();*/
             }
 
             @Override
             public void onAdClosed() {
                 //startGame();
-                Toast.makeText(getActivity(),
+               /* Toast.makeText(getActivity(),
                         "onAdClosed : ",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();*/
             }
         });
 
@@ -229,7 +229,7 @@ public class SampleAddFragment extends BaseFragment implements View.OnClickListe
         if (interstitialAd != null && interstitialAd.isLoaded()) {
             interstitialAd.show();
         } else {
-            Toast.makeText(getActivity(), "Ad did not load", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "Ad did not load", Toast.LENGTH_SHORT).show();
             //startGame();
         }
     }

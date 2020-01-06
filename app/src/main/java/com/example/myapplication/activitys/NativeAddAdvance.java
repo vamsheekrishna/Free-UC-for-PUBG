@@ -194,13 +194,6 @@ public class NativeAddAdvance extends AppCompatActivity {
         }
     }
 
-    /**
-     * Populates a {@link View} object with data from a {@link NativeCustomTemplateAd}. This method
-     * handles a particular "simple" custom native ad format.
-     *
-     * @param nativeCustomTemplateAd the object containing the ad's assets
-     * @param adView                 the view to be populated
-     */
     private void populateSimpleTemplateAdView(final NativeCustomTemplateAd nativeCustomTemplateAd,
                                               View adView) {
         TextView headline = adView.findViewById(R.id.simplecustom_headline);
@@ -252,18 +245,11 @@ public class NativeAddAdvance extends AppCompatActivity {
         }
     }
 
-    /**
-     * Creates a request for a new native ad based on the boolean parameters and calls the
-     * corresponding "populate" method when one is successfully returned.
-     *
-     * @param requestUnifiedNativeAds  indicates whether unified native ads should be requested
-     * @param requestCustomTemplateAds indicates whether custom template ads should be requested
-     */
     private void refreshAd(boolean requestUnifiedNativeAds,
                            boolean requestCustomTemplateAds) {
         if (!requestUnifiedNativeAds && !requestCustomTemplateAds) {
-            Toast.makeText(this, "At least one ad format must be checked to request an ad.",
-                    Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "At least one ad format must be checked to request an ad.",
+                    //Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -308,9 +294,9 @@ public class NativeAddAdvance extends AppCompatActivity {
                     new NativeCustomTemplateAd.OnCustomClickListener() {
                         @Override
                         public void onCustomClick(NativeCustomTemplateAd ad, String s) {
-                            Toast.makeText(NativeAddAdvance.this,
-                                    "A custom click has occurred in the simple template",
-                                    Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(InviteApp.this,
+                                    //"A custom click has occurred in the simple template",
+                                    //Toast.LENGTH_SHORT).show();
                         }
                     });
         }
@@ -329,8 +315,8 @@ public class NativeAddAdvance extends AppCompatActivity {
             @Override
             public void onAdFailedToLoad(int errorCode) {
                 refresh.setEnabled(true);
-                Toast.makeText(NativeAddAdvance.this, "Failed to load native ad: "
-                        + errorCode, Toast.LENGTH_SHORT).show();
+                //Toast.makzeText(InviteApp.this, "Failed to load native ad: "
+                       // + errorCode, Toast.LENGTH_SHORT).show();
             }
         }).build();
 

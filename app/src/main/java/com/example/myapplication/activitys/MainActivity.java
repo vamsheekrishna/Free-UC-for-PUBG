@@ -1,17 +1,16 @@
 package com.example.myapplication.activitys;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -19,12 +18,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.myapplication.BuildConfig;
 import com.example.myapplication.R;
-import com.example.myapplication.fragments.AboutFragment;
 import com.example.myapplication.fragments.DailyBonusFragment;
 import com.example.myapplication.fragments.EarnMoneyFragment;
 import com.example.myapplication.fragments.CongratulationScreen;
 import com.example.myapplication.fragments.FreeRoyalPassFragment;
 import com.example.myapplication.fragments.HomeFragment;
+import com.example.myapplication.fragments.InviteApp;
 import com.example.myapplication.fragments.OnHomeFragmentInteractionListener;
 import com.example.myapplication.fragments.RateUsBoxFragment;
 import com.example.myapplication.fragments.SampleAddFragment;
@@ -47,17 +46,21 @@ import static com.example.myapplication.fragments.BaseFragment.DIALOG;
 
 public class MainActivity extends BaseActivity implements OnHomeFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int MY_PERMISSIONS_REQUEST_READ_CALL_LOG= 1;
+    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 2;
     AdView adView;
     TextView mUCCount;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
 
+    private static final int MY_PERMISSIONS_REQUEST_READ_PHONE_STATE = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        checkPermition();
         setNavigationView();
         fireBaseAds();
         //facebookAds();
@@ -67,6 +70,50 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
         fragmentTransaction.add(R.id.container, HomeFragment.newInstance(), "Home");
         fragmentTransaction.commit();
     }
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    private void checkPermition() {
+        /*int temp = ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE);
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED
+        ||ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE},
+                    MY_PERMISSIONS_REQUEST_READ_PHONE_STATE);
+
+        }
+        if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED
+                ||ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_CALL_LOG) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_CALL_LOG},
+                    MY_PERMISSIONS_REQUEST_READ_CALL_LOG);
+
+        }
+
+        if (ActivityCompat.checkSelfPermission(MainActivity.this,Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED
+                ||ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CALL_PHONE},
+                    MY_PERMISSIONS_REQUEST_CALL_PHONE);
+        }*/
+
+        int PERMISSION_ALL = 1;
+        String[] PERMISSIONS = {
+                android.Manifest.permission.CALL_PHONE,
+                android.Manifest.permission.READ_CALL_LOG,
+                android.Manifest.permission.READ_PHONE_STATE,
+                android.Manifest.permission.SEND_SMS
+        };
+
+        if(!hasPermissions(this, PERMISSIONS)){
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
+        }
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -122,8 +169,9 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
 
     @Override
     public void goToInvitationLink() {
-        showNativeAdd();
-        //replaceFragment(InvitationLinkFragment.newInstance(),getString(R.string.invitation_link), true);
+        //showNativeAdd();
+        setAddMode(true);
+        replaceFragment(InviteApp.newInstance(),getString(R.string.invitation_link), true);
     }
 
     public void setText(String text) {
@@ -157,14 +205,14 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
             @Override
             public void onAdLoaded() {
                 showInterstitial(mInterstitialAd);
-                Toast.makeText(MainActivity.this, "onAdLoaded()", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "onAdLoaded()", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
-                Toast.makeText(MainActivity.this,
-                        "onAdFailedToLoad() with error code: " + errorCode,
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this,
+//                        "onAdFailedToLoad() with error code: " + errorCode,
+                        //Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -179,8 +227,7 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
         if (interstitialAd != null && interstitialAd.isLoaded()) {
             interstitialAd.show();
         } else {
-            Toast.makeText(MainActivity.this, "Ad did not load", Toast.LENGTH_SHORT).show();
-            //startGame();
+            //Toast.makeText(MainActivity.this, "Ad did not load", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -193,27 +240,28 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
         final RewardedAdCallback adCallback = new RewardedAdCallback() {
             @Override
             public void onRewardedAdOpened() {
-                Toast.makeText(Objects.requireNonNull(MainActivity.this), "onRewardedAdOpened", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(MainActivity.this), "onRewardedAdOpened", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedAdClosed() {
                 // Ad closed.
                 //goToDailyBonus();
-                goToSpinnerBonus();
-                Toast.makeText(Objects.requireNonNull(MainActivity.this), "Ad closed.", Toast.LENGTH_SHORT).show();
+                //goToSpinnerBonus();
+                //Toast.makeText(Objects.requireNonNull(MainActivity.this), "Ad closed.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onUserEarnedReward(@NonNull RewardItem reward) {
+                goToSpinnerBonus();
                 // User earned reward.
-                Toast.makeText(Objects.requireNonNull(MainActivity.this), "User earned reward.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(MainActivity.this), "User earned reward.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedAdFailedToShow(int errorCode) {
                 // Ad failed to display
-                Toast.makeText(Objects.requireNonNull(MainActivity.this), "Ad failed to display.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(MainActivity.this), "Ad failed to display.", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -225,14 +273,14 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
                 // Ad successfully loaded.
                 progressdialog.dismiss();
                 rewardedAd.show(Objects.requireNonNull(MainActivity.this), adCallback);
-                Toast.makeText(Objects.requireNonNull(MainActivity.this), "Ad successfully loaded.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(MainActivity.this), "Ad successfully loaded.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedAdFailedToLoad(int errorCode) {
                 // Ad failed to load.
                 progressdialog.dismiss();
-                Toast.makeText(Objects.requireNonNull(MainActivity.this), "Ad failed to load.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Objects.requireNonNull(MainActivity.this), "Ad failed to load.", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -262,10 +310,10 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
                 if(t.onOptionsItemSelected(item))
                     return true;
                 break;
-            case R.id.menu_about:
+            /*case R.id.menu_about:
                 isHamburgerAsUp();
-                Toast.makeText(MainActivity.this, "about",Toast.LENGTH_SHORT).show();
-                break;
+                //Toast.makeText(MainActivity.this, "about",Toast.LENGTH_SHORT).show();
+                break;*/
         }
 
         onBackPressed();
@@ -283,12 +331,12 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
                 replaceFragment(WalletFragment.newInstance(), "My Wallet", true);
                 break;
                 //Toast.makeText(MainActivity.this, "Wallet",Toast.LENGTH_SHORT).show();break;
-            case R.id.menu_about:
+            /*case R.id.menu_about:
                 //enableBackArrow();
 
                 setAddMode(true);
                 replaceFragment(AboutFragment.newInstance("", ""),"How to use", true);
-                break;
+                break;*/
             case R.id.menu_rate_us:
                 FragmentTransaction ft = Objects.requireNonNull(this).getSupportFragmentManager().beginTransaction();
                 ft.addToBackStack(null);
@@ -325,4 +373,23 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
     private void isHamburgerAsUp() {
         t.setDrawerIndicatorEnabled(true);
     }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        /*if (requestCode == MY_PERMISSIONS_REQUEST_READ_PHONE_STATE || requestCode == MY_PERMISSIONS_REQUEST_READ_CALL_LOG
+        |requestCode == MY_PERMISSIONS_REQUEST_CALL_PHONE ) {
+
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                *//*Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);*//*
+
+            } else {
+                Toast.makeText(this,"Please accept the call Permission.",Toast.LENGTH_SHORT).show();
+                checkPermition();
+            }
+        }*/
+    }
+
 }
