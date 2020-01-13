@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.097" />
 
     <Button
-        android:id="@+id/cancel"
+        android:id="@+id/close_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="No, thanks"

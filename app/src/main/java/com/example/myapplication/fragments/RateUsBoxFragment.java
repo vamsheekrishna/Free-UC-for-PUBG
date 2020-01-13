@@ -37,7 +37,7 @@ public class RateUsBoxFragment extends DialogFragment implements View.OnClickLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.rate_us_dialog, container);
         v.findViewById(R.id.rate).setOnClickListener(this);
-        v.findViewById(R.id.cancel).setOnClickListener(this);
+        v.findViewById(R.id.close_dialog).setOnClickListener(this);
         return v;
     }
 
@@ -61,8 +61,8 @@ public class RateUsBoxFragment extends DialogFragment implements View.OnClickLis
                 }
                 dismiss();
                 break;
-            case R.id.close:
-                    dismiss();
+            case R.id.close_dialog:
+                dismiss();
                 break;
         }
     }
