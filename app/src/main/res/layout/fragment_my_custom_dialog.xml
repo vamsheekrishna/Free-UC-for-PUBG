@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:padding="36dp"
-        android:background="@drawable/registration_bg">
+        android:background="@color/splash_bg">
         <ImageView
             app:imageResource="@{congratsModel.image}"
             android:layout_centerInParent="true"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold|italic"
                 android:textSize="18sp"
-                android:textColor="@color/violet"
+                android:textColor="@color/white"
                 android:text="@={congratsModel.title}"/>
             <TextView
                 android:layout_gravity="center"
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="55sp"
-                android:textColor="@color/white"
+                android:textColor="@color/violet"
                 android:text="@={congratsModel.name}">
             </TextView>
         </LinearLayout>

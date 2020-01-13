@@ -30,7 +30,7 @@ import com.example.myapplication.fragments.SampleAddFragment;
 import com.example.myapplication.fragments.SpinnerBonusFragment;
 import com.example.myapplication.fragments.WalletFragment;
 import com.example.myapplication.models.Utilities;
-import com.facebook.ads.AdView;
+//import com.facebook.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.rewarded.RewardItem;
@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
 
     private static final int MY_PERMISSIONS_REQUEST_READ_CALL_LOG= 1;
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 2;
-    AdView adView;
+    //AdView adView;
     TextView mUCCount;
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
@@ -139,9 +139,9 @@ public class MainActivity extends BaseActivity implements OnHomeFragmentInteract
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (adView != null) {
+        /*if (adView != null) {
             adView.destroy();
-        }
+        }*/
     }
 
     @Override

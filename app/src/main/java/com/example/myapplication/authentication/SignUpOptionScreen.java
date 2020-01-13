@@ -50,15 +50,6 @@ public class SignUpOptionScreen extends Fragment implements View.OnClickListener
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FreeUCButtonScreen.
-     */
-    // TODO: Rename and change types and number of parameters
     public static SignUpOptionScreen newInstance(String param1, String param2) {
         SignUpOptionScreen fragment = new SignUpOptionScreen();
         return fragment;

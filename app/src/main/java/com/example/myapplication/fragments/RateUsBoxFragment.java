@@ -19,6 +19,8 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.myapplication.R;
 
+import java.util.Objects;
+
 public class RateUsBoxFragment extends DialogFragment implements View.OnClickListener {
 
     public static RateUsBoxFragment newInstance() {
@@ -35,6 +37,7 @@ public class RateUsBoxFragment extends DialogFragment implements View.OnClickLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.rate_us_dialog, container);
         v.findViewById(R.id.rate).setOnClickListener(this);
+        v.findViewById(R.id.cancel).setOnClickListener(this);
         return v;
     }
 
@@ -49,7 +52,7 @@ public class RateUsBoxFragment extends DialogFragment implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rate:
-                Uri uri = Uri.parse("market://details?id=com.tencent.ig");
+                Uri uri = Uri.parse("market://details?id="+ Objects.requireNonNull(getActivity()).getApplicationContext().getPackageName());
                 Intent myAppLinkToMarket = new Intent(Intent.ACTION_VIEW, uri);
                 try {
                     startActivity(myAppLinkToMarket);

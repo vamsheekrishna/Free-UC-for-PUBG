@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.myapplication.fragments.BaseFragment;
 import com.example.myapplication.R;
+import com.example.myapplication.fragments.DialogBoxFragment;
+import com.example.myapplication.models.Utilities;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -29,11 +31,14 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Locale;
 import java.util.Objects;
+
+import static com.example.myapplication.fragments.BaseFragment.DIALOG;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -48,11 +53,15 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
+        if(!Utilities.internetConnectionAvailable(30000)) {
+            showDialog(null, R.drawable.plogo, getString(R.string.network_error_msg));
+        } else {
+            MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                @Override
+                public void onInitializationComplete(InitializationStatus initializationStatus) {
+                }
+            });
+        }
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
@@ -186,8 +195,7 @@ public class BaseActivity extends AppCompatActivity {
         AdLoader adLoader = builder.withAdListener(new AdListener() {
             @Override
             public void onAdFailedToLoad(int errorCode) {
-                Toast.makeText(BaseActivity.this, "Failed to load native ad: "
-                        + errorCode, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(BaseActivity.this, "Failed to load native ad: " + errorCode, Toast.LENGTH_SHORT).show();
             }
         }).build();
 
@@ -446,4 +454,11 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    void showDialog(String score, int bg_image, String title) {
+        FragmentTransaction ft = Objects.requireNonNull(this).getSupportFragmentManager().beginTransaction();
+        ft.addToBackStack(null);
+        final DialogFragment dialogFragment = DialogBoxFragment.newInstance(title ,score, bg_image);
+        dialogFragment.setCancelable(false);
+        dialogFragment.show(ft, DIALOG);
+    }
 }

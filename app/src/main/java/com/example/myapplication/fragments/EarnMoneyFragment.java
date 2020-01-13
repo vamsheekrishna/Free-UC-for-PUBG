@@ -58,7 +58,7 @@ public class EarnMoneyFragment extends HomeBaseFragment implements View.OnClickL
         mListener.setText(String.valueOf(this.getTag()));
         View view = inflater.inflate(R.layout.fragment_earn_money, container, false);
         if(!Utilities.internetConnectionAvailable(30000)) {
-            showDialog(null, R.drawable.install_apps, Objects.requireNonNull(getActivity()).getString(R.string.network_error_msg));
+            showDialog(null, R.drawable.plogo, Objects.requireNonNull(getActivity()).getString(R.string.network_error_msg));
         }
         recyclerView = view.findViewById(R.id.earn_money);
         getRecycleViewDate();
